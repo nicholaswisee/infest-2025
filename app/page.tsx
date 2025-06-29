@@ -1,9 +1,9 @@
-import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
 
 const page = () => {
   return (
-    <main className="bg-gradient-to-b from-[#3B007D] to-[#280068] min-h-screen w-full flex flex-col items-center h-[2000px]">
-      <Navbar />
+    <main className="h-full w-full flex flex-col justify-center">
+      <Hero />
     </main>
   );
 };
