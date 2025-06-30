@@ -14,3 +14,17 @@ export interface CardData {
   image: string;
   link: string;
 }
+export interface FAQuestionProps {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onClick: () => void;
+  index: number;
+}
+
+export interface FAQItemData {
+  value: string;
+  question: string;
+  answer: string;
+}
+
