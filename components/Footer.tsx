@@ -12,7 +12,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white min-w-screen py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-black text-white max-w-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Main Content */}
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-8">

@@ -6,3 +6,11 @@ export interface MockLinkProps {
   onClick: (event: MouseEvent<HTMLAnchorElement>) => void;
   className?: string;
 }
+
+export interface CardData {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+}
