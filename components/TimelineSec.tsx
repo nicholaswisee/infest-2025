@@ -1,5 +1,34 @@
 import FAQSection from "./FAQSection";
 import Timeline from "./Timeline";
+import { FAQItemData } from "@/types";
+
+const faqData: FAQItemData[] = [
+  {
+    value: "faq-1",
+    question: "Bang Farrel kapan punya pacar?",
+    answer: "Kompetisi ini terbuka untuk semua individu berusia 18 tahun ke atas. Tidak ada batasan latar belakang pendidikan atau profesi. Silakan lihat bagian 'Syarat dan Ketentuan' untuk detail lebih lanjut."
+  },
+  {
+    value: "faq-2",
+    question: "Bang Farrel punya pacar gak?",
+    answer: "Bang Farrel sigma"
+  },
+  {
+    value: "faq-3",
+    question: "Wise Rizz banget ya?",
+    answer: `Farrel "Frallex" Athalla Putra and Nicholas "Kolak" Wise Saragih   `
+  },
+  {
+    value: "faq-4",
+    question: "Apakah ada biaya pendaftaran?",
+    answer: "Tidak, pendaftaran untuk kompetisi ini sepenuhnya gratis. Kami ingin memastikan semua orang memiliki kesempatan yang sama untuk berpartisipasi."
+  },
+  {
+    value: "faq-5",
+    question: "Mana redupnya, kapan redupnya",
+    answer: "Eskeetit skrt skrrrttt Surabaya L City bruh Stanley Hao more like Stanley Who yo whaaaatttt Surabaya L City Lorem ipsum dolor sit amet Big Mo you are so goatet"
+  },
+];
 
 const TimelineSec = () => {
   return (
@@ -12,7 +41,7 @@ const TimelineSec = () => {
             Timeline
           </h1>
           <Timeline />
-          <FAQSection />
+          <FAQSection faqData={faqData}/>
         </div>
       </div>
     </section>

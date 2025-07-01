@@ -28,3 +28,6 @@ export interface FAQItemData {
   answer: string;
 }
 
+export interface FAQSectionProps {
+  faqData: FAQItemData[];
+}

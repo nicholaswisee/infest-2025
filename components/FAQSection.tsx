@@ -1,36 +1,8 @@
 'use client';
 
-import { FAQItemData, FAQuestionProps } from "@/types/index" 
+import { FAQuestionProps, FAQSectionProps } from "@/types/index" 
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
-
-const faqData: FAQItemData[] = [
-  {
-    value: "faq-1",
-    question: "Bang Farrel kapan punya pacar?",
-    answer: "Kompetisi ini terbuka untuk semua individu berusia 18 tahun ke atas. Tidak ada batasan latar belakang pendidikan atau profesi. Silakan lihat bagian 'Syarat dan Ketentuan' untuk detail lebih lanjut."
-  },
-  {
-    value: "faq-2",
-    question: "Bang Farrel punya pacar gak?",
-    answer: "Bang Farrel sigma"
-  },
-  {
-    value: "faq-3",
-    question: "Wise Rizz banget ya?",
-    answer: `Farrel "Frallex" Athalla Putra and Nicholas "Kolak" Wise Saragih   `
-  },
-  {
-    value: "faq-4",
-    question: "Apakah ada biaya pendaftaran?",
-    answer: "Tidak, pendaftaran untuk kompetisi ini sepenuhnya gratis. Kami ingin memastikan semua orang memiliki kesempatan yang sama untuk berpartisipasi."
-  },
-  {
-    value: "faq-5",
-    question: "Mana redupnya, kapan redupnya",
-    answer: "Eskeetit skrt skrrrttt Surabaya L City bruh Stanley Hao more like Stanley Who yo whaaaatttt Surabaya L City Lorem ipsum dolor sit amet Big Mo you are so goatet"
-  },
-];
 
 const FAQuestion: React.FC<FAQuestionProps> = ({ question, answer, isOpen, onClick, index }) => {
   const triggerId = `faq-trigger-${index}`;
@@ -53,9 +25,9 @@ const FAQuestion: React.FC<FAQuestionProps> = ({ question, answer, isOpen, onCli
         />
       </button>
       <div
-        id={contentId} // Accessibility attribute: unique ID for the content
-        role="region" // Accessibility attribute: defines a perceivable section of content
-        aria-labelledby={triggerId} // Accessibility attribute: links back to the trigger
+        id={contentId} 
+        role="region"
+        aria-labelledby={triggerId} 
         className={`
           overflow-hidden transition-all duration-300 ease-in-out
           ${isOpen ? 'max-h-96 opacity-100 p-4' : 'max-h-0 opacity-0'}
@@ -68,8 +40,7 @@ const FAQuestion: React.FC<FAQuestionProps> = ({ question, answer, isOpen, onCli
   );
 };
 
-
-const FAQSection = () => {
+const FAQSection: React.FC<FAQSectionProps> = ({faqData}) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
