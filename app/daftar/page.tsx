@@ -11,13 +11,15 @@ const page = () => {
         src={Bubble}
         alt="Icon"
         className="absolute top-0 right-0 w-[500px] h-[500px] md:w-[450px] md:h-[450px] translate-x-[40%] -translate-y-[20%] -z-10"
+        data-aos="fade-down-left"
       />
       <Image
         src={Bubble}
         alt="Icon"
         className="absolute bottom-0 left-0 w-[500x] h-[500px] md:w-[450px] md:h-[450px] -translate-x-[30%] translate-y-[30%] -z-10  "
+        data-aos="fade-up-right"
       />
-      <div className="p-10 md:p-16 lg:p-20 lg:px-32">
+      <div className="p-10 md:p-16 lg:p-20 lg:px-32" data-aos="zoom-in">
         <h1 className="pb-4 text-center bg-gradient-to-b from-white via-[#FFAFDF] to-white text-transparent bg-clip-text font-bold text-4xl sm:text-7xl md:text-8xl lg:text-9xl mt-20">
           Registration
         </h1>

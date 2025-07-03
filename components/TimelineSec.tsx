@@ -58,7 +58,10 @@ const TimelineSec = () => {
           className="absolute top-[30%] right-0 w-[300px] h-[300px] md:w-[450px] md:h-[450px] translate-x-[40%] z-0"
         />
         <div className="p-10 md:p-16 lg:p-20 lg:px-32">
-          <h1 className="text-right bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent bg-clip-text font-bold text-3xl md:text-5xl lg:text-6xl mt-20">
+          <h1
+            className="text-right bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent bg-clip-text font-bold text-3xl md:text-5xl lg:text-6xl mt-20"
+            data-aos="fade-up-left"
+          >
             Timeline
           </h1>
           <Timeline />

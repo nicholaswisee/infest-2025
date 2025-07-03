@@ -30,7 +30,10 @@ const EventCarousel: React.FC<EventCarouselProps> = ({ cards }) => {
   };
 
   return (
-    <div className="relative w-full flex flex-col items-center justify-center py-16 bg-[#240046] px-4 overflow-hidden rounded-xl">
+    <div
+      className="relative w-full flex flex-col items-center justify-center py-16 bg-[#240046] px-4 overflow-hidden rounded-xl"
+      data-aos="zoom-out"
+    >
       <div className="absolute left-0 top-0 h-full w-12 sm:w-24 bg-gradient-to-r from-[#240046] via-[#240046]/40 to-transparent z-30 pointer-events-none" />
       <div className="absolute right-0 top-0 h-full w-12 sm:w-24 bg-gradient-to-l from-[#240046] via-[#240046]/40 to-transparent z-30 pointer-events-none" />
       <div className="relative w-[90%] lg:w-[70%] h-[250px] md:h-[350px] [perspective:1200px]">

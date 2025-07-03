@@ -46,7 +46,7 @@ const Timeline: React.FC = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full" data-aos="fade-up" data-aos-duration="3000">
       <div className="relative mx-auto">
         <div
           ref={scrollContainerRef}

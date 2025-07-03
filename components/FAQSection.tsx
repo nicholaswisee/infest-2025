@@ -54,7 +54,10 @@ const FAQSection: React.FC<FAQSectionProps> = ({ faqData }) => {
   };
 
   return (
-    <section className="relative overflow-hidden py-4 min-h-fit flex flex-col justify-center items-center">
+    <section
+      className="relative overflow-hidden py-4 min-h-fit flex flex-col justify-center items-center"
+      data-aos="fade-up"
+    >
       <h1 className="text-white font-bold text-3xl md:text-5xl lg:text-6xl mt-20 text-center mb-12">
         Frequently Asked{" "}
         <span className="bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent bg-clip-text">
