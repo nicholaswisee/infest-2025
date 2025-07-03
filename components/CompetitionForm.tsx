@@ -1,6 +1,13 @@
 "use client";
 import React, { useState, FormEvent, ChangeEvent } from "react";
-import { UploadCloud, FileText, X, ArrowRight, ArrowLeft } from "lucide-react";
+import {
+  UploadCloud,
+  FileText,
+  X,
+  ArrowRight,
+  ArrowLeft,
+  CheckCircle,
+} from "lucide-react";
 
 // Tipe untuk data formulir
 interface FormData {
@@ -38,18 +45,20 @@ const FileInput = ({
   file,
   onFileChange,
   required = true,
+  setToast,
 }: {
   label: string;
   file: File | null;
   onFileChange: (file: File | null) => void;
   required?: boolean;
+  setToast: (message: string) => void;
 }) => {
   const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
       if (selectedFile.size > 5 * 1024 * 1024) {
         // 5MB limit
-        alert("Ukuran file tidak boleh melebihi 5MB.");
+        setToast("Ukuran file tidak boleh melebihi 5MB.");
         return;
       }
       onFileChange(selectedFile);
@@ -128,8 +137,19 @@ const CompetitionForm = ({
     followAnggota2: null,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [hasAnggota2, setHasAnggota2] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [isToastVisible, setIsToastVisible] = useState(false);
+  const showToast = (message: string) => {
+    setToastMessage(message);
+    setIsToastVisible(true);
+    // Set timer untuk menyembunyikan toast setelah 3 detik
+    setTimeout(() => {
+      setIsToastVisible(false);
+    }, 3000);
+  };
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -193,7 +213,7 @@ const CompetitionForm = ({
         setStep((prev) => prev + 1);
       }
     } else {
-      alert("Harap isi semua kolom yang wajib diisi (*).");
+      showToast("Harap isi semua kolom yang wajib diisi (*).");
     }
   };
 
@@ -202,7 +222,7 @@ const CompetitionForm = ({
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validateStep()) {
-      alert("Harap isi semua kolom yang wajib diisi (*).");
+      showToast("Harap isi semua kolom yang wajib diisi (*).");
       return;
     }
     setIsSubmitting(true);
@@ -241,7 +261,8 @@ const CompetitionForm = ({
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result.message || "Terjadi kesalahan.");
-      setStatusMessage("Pendaftaran berhasil! Terima kasih.");
+      // setStatusMessage("Pendaftaran berhasil! Terima kasih.");
+      setIsSuccess(true);
       // Optionally reset form or redirect
     } catch (error: any) {
       setStatusMessage(`Error: ${error.message}`);
@@ -249,9 +270,50 @@ const CompetitionForm = ({
       setIsSubmitting(false);
     }
   };
-
+  if (isSuccess) {
+    return (
+      <div className="w-full flex items-center justify-center p-4">
+        <div className="w-full max-w-2xl mx-auto bg-[#240046]/80 backdrop-blur-lg p-8 rounded-2xl border border-white/20 shadow-2xl text-center animate-fade-in">
+          <CheckCircle className="mx-auto h-16 w-16 text-green-400 mb-4" />
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            Pendaftaran Berhasil!
+          </h1>
+          <p className="text-xs sm:text-sm md:text-base text-white/80 mb-6">
+            Terima kasih telah mendaftar. Untuk informasi selanjutnya, silahkan
+            bergabung ke grup WhatsApp melalui link di bawah ini.
+          </p>
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm md:text-base inline-block bg-gradient-to-r from-green-600 outline-1 outline-white/20 to-green-800 text-white font-bold py-3 px-8 rounded-full mb-8 hover:scale-105 duration-300 transition-all"
+          >
+            Gabung Grup WhatsApp
+          </a>
+          <a
+            href="/"
+            className="text-sm md:text-base block text-purple-300 hover:text-purple-200 transition-colors"
+          >
+            Kembali ke Halaman Utama
+          </a>
+        </div>
+      </div>
+    );
+  }
   return (
-    <div className="bg-[#1a0033] min-h-screen flex items-center justify-center p-4">
+    <div className="w-full flex items-center justify-center p-4">
+      <div
+        className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-in-out
+        ${
+          isToastVisible
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-20 opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="bg-[#240046] text-white px-6 py-3 rounded-xl border border-white/20 shadow-xl text-center">
+          {toastMessage}
+        </div>
+      </div>
       <div className="w-full max-w-2xl mx-auto bg-[#240046]/80 backdrop-blur-lg p-8 rounded-2xl border border-white/20 shadow-2xl">
         <h1 className="text-3xl font-bold text-white text-center mb-2">
           Pendaftaran {competitionType}
@@ -296,12 +358,18 @@ const CompetitionForm = ({
                   required
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
                 >
-                  <option value="" disabled>
+                  <option className="bg-[#401B67] text-white" value="" disabled>
                     Pilih metode
                   </option>
-                  <option value="BCA">BCA</option>
-                  <option value="Gopay">Gopay</option>
-                  <option value="Mandiri">Mandiri</option>
+                  <option className="bg-[#401B67]" value="BCA">
+                    BCA
+                  </option>
+                  <option className="bg-[#401B67]" value="Gopay">
+                    Gopay
+                  </option>
+                  <option className="bg-[#401B67]" value="Mandiri">
+                    Mandiri
+                  </option>
                 </select>
               </div>
               <FileInput
@@ -310,6 +378,7 @@ const CompetitionForm = ({
                 onFileChange={(file) =>
                   handleFileChange("buktiPembayaran", file)
                 }
+                setToast={showToast}
               />
             </div>
           )}
@@ -387,16 +456,19 @@ const CompetitionForm = ({
                 label="Foto KTM"
                 file={formData.ktmKetua}
                 onFileChange={(file) => handleFileChange("ktmKetua", file)}
+                setToast={showToast}
               />
               <FileInput
                 label="Bukti Postingan Twibbon"
                 file={formData.twibbonKetua}
                 onFileChange={(file) => handleFileChange("twibbonKetua", file)}
+                setToast={showToast}
               />
               <FileInput
                 label="Bukti Follow Instagram"
                 file={formData.followKetua}
                 onFileChange={(file) => handleFileChange("followKetua", file)}
+                setToast={showToast}
               />
             </div>
           )}
@@ -459,6 +531,7 @@ const CompetitionForm = ({
                 label="Foto KTM"
                 file={formData.ktmAnggota1}
                 onFileChange={(file) => handleFileChange("ktmAnggota1", file)}
+                setToast={showToast}
               />
               <FileInput
                 label="Bukti Postingan Twibbon"
@@ -466,6 +539,7 @@ const CompetitionForm = ({
                 onFileChange={(file) =>
                   handleFileChange("twibbonAnggota1", file)
                 }
+                setToast={showToast}
               />
               <FileInput
                 label="Bukti Follow Instagram"
@@ -473,6 +547,7 @@ const CompetitionForm = ({
                 onFileChange={(file) =>
                   handleFileChange("followAnggota1", file)
                 }
+                setToast={showToast}
               />
 
               <div className="relative flex items-start pt-4">
@@ -508,13 +583,14 @@ const CompetitionForm = ({
                   htmlFor="namaAnggota2"
                   className="block text-sm font-medium text-white/90 mb-2"
                 >
-                  Nama Anggota 2
+                  Nama Anggota 2 <span className="text-red-400">*</span>
                 </label>
                 <input
                   type="text"
                   id="namaAnggota2"
                   value={formData.namaAnggota2}
                   onChange={handleInputChange}
+                  required={hasAnggota2}
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
                 />
               </div>
@@ -523,13 +599,14 @@ const CompetitionForm = ({
                   htmlFor="hpAnggota2"
                   className="block text-sm font-medium text-white/90 mb-2"
                 >
-                  Nomor HP
+                  Nomor HP <span className="text-red-400">*</span>
                 </label>
                 <input
                   type="tel"
                   id="hpAnggota2"
                   value={formData.hpAnggota2}
                   onChange={handleInputChange}
+                  required={hasAnggota2}
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
                 />
               </div>
@@ -538,13 +615,14 @@ const CompetitionForm = ({
                   htmlFor="univAnggota2"
                   className="block text-sm font-medium text-white/90 mb-2"
                 >
-                  Universitas Asal
+                  Universitas Asal <span className="text-red-400">*</span>
                 </label>
                 <input
                   type="text"
                   id="univAnggota2"
                   value={formData.univAnggota2}
                   onChange={handleInputChange}
+                  required={hasAnggota2}
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
                 />
               </div>
@@ -552,7 +630,8 @@ const CompetitionForm = ({
                 label="Foto KTM"
                 file={formData.ktmAnggota2}
                 onFileChange={(file) => handleFileChange("ktmAnggota2", file)}
-                required={false}
+                required={hasAnggota2}
+                setToast={showToast}
               />
               <FileInput
                 label="Bukti Postingan Twibbon"
@@ -560,7 +639,8 @@ const CompetitionForm = ({
                 onFileChange={(file) =>
                   handleFileChange("twibbonAnggota2", file)
                 }
-                required={false}
+                required={hasAnggota2}
+                setToast={showToast}
               />
               <FileInput
                 label="Bukti Follow Instagram"
@@ -568,7 +648,8 @@ const CompetitionForm = ({
                 onFileChange={(file) =>
                   handleFileChange("followAnggota2", file)
                 }
-                required={false}
+                required={hasAnggota2}
+                setToast={showToast}
               />
             </div>
           )}

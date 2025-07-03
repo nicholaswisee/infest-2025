@@ -19,13 +19,13 @@ const Footer = () => {
           {/* Social Media Section */}
           <div className="text-center md:text-center">
             <h2
-              className="text-3xl font-bold mb-6 text-center md:text-center
+              className="text-xl md:text-3xl font-bold mb-6 text-center md:text-center
                             bg-clip-text text-transparent
                             [background-image:linear-gradient(274deg,_#FFF_1.22%,_#C899FF_49.78%,_#FFF_98.35%)]"
             >
               Social Media
             </h2>
-            <p className="text-gray-300 mb-6 font-medium">
+            <p className="text-gray-300 mb-6 font-medium text-xs md:text-sm">
               Follow us on social media to find out the
               <br />
               latest updates on our event!
@@ -62,7 +62,7 @@ const Footer = () => {
           {/* Contact Information Section */}
           <div className="md:w-2/5">
             <h2
-              className="text-3xl font-bold mb-6 text-center md:text-center
+              className="text-xl md:text-3xl font-bold mb-6 text-center md:text-center
                             bg-clip-text text-transparent
                             [background-image:linear-gradient(274deg,_#FFF_1.22%,_#C899FF_49.78%,_#FFF_98.35%)]"
             >
@@ -72,35 +72,43 @@ const Footer = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-center md:text-left font-medium">
               {/* Event Column */}
               <div>
-                <h3 className="text-xl font-semibold mb-2">Event</h3>
+                <h3 className="text-base md:text-xl font-semibold mb-2">
+                  Event
+                </h3>
 
                 <div className="space-y-3">
                   <div>
-                    <p className="font-bold">Audie Quisha</p>
-                    <p className="text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
+                    <p className="text-sm md:text-base font-bold">
+                      Audie Quisha
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
                       <FaWhatsapp className="text-xs" /> 089536645252
                     </p>
-                    <p className="text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
+                    <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
                       <FaLine className="text-xs" /> audiejee
                     </p>
                   </div>
 
                   <div>
-                    <p className="font-bold ">Daffa Andika</p>
-                    <p className="text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
+                    <p className="text-sm md:text-base font-bold ">
+                      Daffa Andika
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
                       <FaWhatsapp className="text-xs" /> 089584631728
                     </p>
-                    <p className="text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
+                    <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
                       <FaLine className="text-xs" /> daffaandikaanya
                     </p>
                   </div>
 
                   <div>
-                    <p className="font-bold ">Patricia Auriela</p>
-                    <p className="text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
+                    <p className="text-sm md:text-base font-bold ">
+                      Patricia Auriela
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
                       <FaWhatsapp className="text-xs" /> 089652246656
                     </p>
-                    <p className="text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
+                    <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
                       <FaLine className="text-xs" /> patriciaauriela
                     </p>
                   </div>
@@ -113,21 +121,25 @@ const Footer = () => {
 
                 <div className="space-y-3">
                   <div>
-                    <p className="font-bold ">Reivaldo Joan</p>
-                    <p className="text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
+                    <p className="text-sm md:text-base font-bold ">
+                      Reivaldo Joan
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
                       089534801385 <FaWhatsapp />
                     </p>
-                    <p className="text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
+                    <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
                       vass270204 <FaLine />
                     </p>
                   </div>
 
                   <div>
-                    <p className="font-bold ">Vincent Andrew S.</p>
-                    <p className="text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
+                    <p className="text-sm md:text-base  font-bold ">
+                      Vincent Andrew S.
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
                       089604076107 <FaWhatsapp />
                     </p>
-                    <p className="text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
+                    <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
                       reivaldojoan210 <FaLine />
                     </p>
                   </div>
@@ -138,12 +150,12 @@ const Footer = () => {
         </div>
 
         <div className="flex justify-center py-3">
-          <Image src={Logo} alt="Logo" className="w-[200px]" />
+          <Image src={Logo} alt="Logo" className="w-[30%] lg:w-[200px]" />
         </div>
 
         {/* Copyright */}
         <div className="pt-3">
-          <p className="text-center text-white">
+          <p className="text-xs md:text-sm text-center text-white">
             © 2024 Kelompok Studi Ekonomi dan Pasar Modal ITB. All Rights
             Reserved
           </p>

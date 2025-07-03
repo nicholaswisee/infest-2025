@@ -47,7 +47,7 @@ const Timeline: React.FC = () => {
 
   return (
     <div className="w-full">
-      <div className="relative w-[90%] mx-auto">
+      <div className="relative mx-auto">
         <div
           ref={scrollContainerRef}
           className="flex items-center gap-8 md:gap-16 px-8 py-12 overflow-x-auto scroll-smooth"

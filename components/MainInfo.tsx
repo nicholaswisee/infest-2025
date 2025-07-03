@@ -2,13 +2,24 @@ import Image from "next/image";
 import Element from "@/public/element.svg";
 import EventCarousel from "./Carousel";
 import { eventCards } from "@/data/event";
+import Bubble from "@/public/bubble1.svg";
+import Bubble2 from "@/public/bubble2.svg";
 const MainInfo = () => {
   return (
     <section>
       <div className="relative h-full w-full isolate overflow-hidden">
         <div className="absolute inset-0 z-[-10] h-full w-full bg-[radial-gradient(ellipse_at_center,rgba(59,0,125,0)_40%,#050505_100%)]"></div>
         <div className="absolute inset-0 z-[-30] h-full w-full bg-gradient-to-b from-[#280068] to-[#5002BD]"></div>
-
+        <Image
+          src={Bubble}
+          alt="Icon"
+          className="absolute top-[15%] -left-[5%] w-[300px] h-[300px] md:w-[450px] md:h-[450px] -translate-x-[20%] -z-10"
+        />
+        <Image
+          src={Bubble2}
+          alt="Icon"
+          className="absolute top-[40%] sm:top-[30%] md:top-[15%] right-0 w-[300px] h-[300px] md:w-[450px] md:h-[450px] translate-x-[40%] -z-10"
+        />
         <p className="text-xs xs:text-sm md:text-base text-white text-center">
           Sponsored by
         </p>
@@ -71,7 +82,6 @@ const MainInfo = () => {
               Events
             </span>
           </h1>
-
           <EventCarousel cards={eventCards} />
         </div>
       </div>
