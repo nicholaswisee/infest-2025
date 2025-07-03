@@ -14,11 +14,15 @@ async function uploadFileToDrive(
   folderId: string
 ): Promise<string | null> {
   if (!file) return null;
+  const privateKey = Buffer.from(
+    process.env.GOOGLE_PRIVATE_KEY_BASE64 || "",
+    "base64"
+  ).toString("utf8");
 
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+      private_key: privateKey,
     },
     scopes: ["https://www.googleapis.com/auth/drive"],
   });
@@ -94,14 +98,17 @@ export async function POST(req: NextRequest) {
       acc[key] = link || "Gagal Unggah";
       return acc;
     }, {} as Record<string, string>);
-
+    const privateKey = Buffer.from(
+      process.env.GOOGLE_PRIVATE_KEY_BASE64 || "",
+      "base64"
+    ).toString("utf8");
     // Menyiapkan koneksi ke Google Sheets
     const sheets = google.sheets({
       version: "v4",
       auth: new google.auth.GoogleAuth({
         credentials: {
           client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-          private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+          private_key: privateKey,
         },
         scopes: ["https://www.googleapis.com/auth/spreadsheets"],
       }),
