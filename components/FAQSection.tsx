@@ -42,8 +42,8 @@ const FAQuestion: React.FC<FAQuestionProps> = ({
       >
         <p
           className={`
-            text-xs md:text-sm transition-opacity
-            ${isOpen ? "opacity-100" : "opacity-0"}
+            text-xs md:text-sm transition-opacity duration-500
+            ${isOpen ? "delay-200 opacity-100" : "opacity-0"}
           `}
         >
           {answer}
@@ -52,6 +52,7 @@ const FAQuestion: React.FC<FAQuestionProps> = ({
     </div>
   );
 };
+
 const FAQSection: React.FC<FAQSectionProps> = ({ faqData }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 

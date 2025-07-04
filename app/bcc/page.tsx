@@ -71,9 +71,8 @@ const page = () => {
           className="text-xs md:text-sm lg:text-base text-white text-center text-shadow-lg/20"
           data-aos="zoom-in-up"
         >
-          Business Case Competition merupakan kompetisi yang menguji kemampuan
-          <span className="font-[800] text-[#FFEED2]">
-            problem solving dan analytical thinking dalam konteks bisnis.
+          Business Case Competition merupakan kompetisi yang menguji kemampuan <span className="font-[800] text-[#FFEED2]">
+             problem solving dan analytical thinking dalam konteks bisnis.
           </span>{" "}
           Business Case Competition akan terbagi menjadi 3 babak, yakni babak
           kualifikasi (qualification round), babak penyisihan (preliminary
