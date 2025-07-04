@@ -35,17 +35,23 @@ const FAQuestion: React.FC<FAQuestionProps> = ({
         role="region"
         aria-labelledby={triggerId}
         className={`
-          overflow-hidden transition-all duration-300 ease-in-out
-          ${isOpen ? "m ax-h-96 opacity-100 p-4" : "max-h-0 opacity-0"}
+          overflow-hidden transition-all duration-500 ease-in-out
+          ${isOpen ? "max-h-96 opacity-100 p-4" : "max-h-0 opacity-0"}
           text-white [background-image:linear-gradient(180deg,#936FBF_0%,#603394_100%)]
         `}
       >
-        <p className="text-xs md:text-sm">{answer}</p>
+        <p
+          className={`
+            text-xs md:text-sm transition-opacity
+            ${isOpen ? "opacity-100" : "opacity-0"}
+          `}
+        >
+          {answer}
+        </p>
       </div>
     </div>
   );
 };
-
 const FAQSection: React.FC<FAQSectionProps> = ({ faqData }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 

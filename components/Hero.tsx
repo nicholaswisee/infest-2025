@@ -55,14 +55,14 @@ const Hero = () => {
             Investment Festival
           </p>
 
-          <p
+          <a
             className="text-sm md:text-base bg-gradient-to-r from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-6 py-2 sm:py-3 flex items-center gap-3 animate-float delay-2000"
             data-aos="fade-up"
-            data-aos-anchor-placement="bottom-bottom"
+            data-aos-anchor-placement="bottom-bottom" href="#main-section"
           >
             Get Started
             <ArrowRight className="text-[#2F016D] w-4 md:w-5" />
-          </p>
+          </a>
         </div>
       </div>
     </section>

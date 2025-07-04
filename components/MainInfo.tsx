@@ -6,7 +6,7 @@ import Bubble from "@/public/bubble1.svg";
 import Bubble2 from "@/public/bubble2.svg";
 const MainInfo = () => {
   return (
-    <section>
+    <section id="main-section">
       <div className="relative h-full w-full isolate overflow-hidden">
         <div className="absolute inset-0 z-[-10] h-full w-full bg-[radial-gradient(ellipse_at_center,rgba(59,0,125,0)_40%,#050505_100%)]"></div>
         <div className="absolute inset-0 z-[-30] h-full w-full bg-gradient-to-b from-[#280068] to-[#5002BD]"></div>
