@@ -92,7 +92,7 @@ const EventCarousel: React.FC<EventCarouselProps> = ({ cards }) => {
                   {/* Tombol See More diposisikan secara absolut di pojok kanan bawah */}
                   <a
                     href={card.link}
-                    onClick={(e) => e.preventDefault()} // Mencegah navigasi di pratinjau
+                   // Mencegah navigasi di pratinjau
                     className="absolute bottom-6 right-6 md:bottom-8 md:right-8 w-fit bg-gradient-to-r from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-4 md:px-6 py-2 sm:py-3 transition-all duration-300 hover:scale-105 text-xs sm:text-sm md:text-base"
                   >
                     See More

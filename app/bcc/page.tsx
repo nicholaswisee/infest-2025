@@ -80,14 +80,14 @@ const page = () => {
           stage) dan babak final (final round).
         </p>
 
-        <p
+        <a
           className="mt-10 md:mt-16 mx-auto w-fit text-sm md:text-base bg-gradient-to-r from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-6 py-2 sm:py-3 flex items-center gap-3"
           data-aos="fade-up"
-          data-aos-anchor-placement="bottom-bottom"
+          data-aos-anchor-placement="bottom-bottom" href="/daftar" 
         >
           Daftar Sekarang
           <ArrowRight className="text-[#2F016D] w-4 md:w-5" />
-        </p>
+        </a>
 
         <p
           className="text-center pb-4 bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent bg-clip-text font-bold text-3xl md:text-4xl lg:text-5xl mt-20 md:mt-28"
