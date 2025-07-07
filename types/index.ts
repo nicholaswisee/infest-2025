@@ -6,3 +6,8 @@ export interface MockLinkProps {
   onClick: (event: MouseEvent<HTMLAnchorElement>) => void;
   className?: string;
 }
+
+export type CountdownProps = {
+  targetDate: Date;
+  onFinish?: () => void;
+};
