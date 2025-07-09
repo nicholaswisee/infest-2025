@@ -1,21 +1,52 @@
 import React from "react";
 
-const BoxComponent = ({ description, StyleInput }: { description: string, StyleInput : string}) => {
+// Kalau ada inputan bold maka bisa pake Text1**Text2**Text3 maka text2 akan menjadi bold
+const BoxComponent = ({ description, StyleInput } : {description : string, StyleInput : string}) => {
+
+  const BOLD_REGEX = /\*\*(.*?)\*\*/g;
+
+ 
+  const renderFormattedDescription = () => {
+    if (!description) return null;
+
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = BOLD_REGEX.exec(description)) !== null) {
+      const boldContent = match[1]; 
+      const matchStart = match.index;
+      const matchEnd = match.index + match[0].length;
+
+      if (matchStart > lastIndex) {
+        parts.push(
+          <span key={`normal-${lastIndex}`}>
+            {description.substring(lastIndex, matchStart)}
+          </span>
+        );
+      }
+      parts.push(<strong key={`bold-${matchStart}`}>{boldContent}</strong>);
+
+      lastIndex = matchEnd;
+    }
+
+
+    if (lastIndex < description.length) {
+      parts.push(
+        <span key={`normal-end`}>{description.substring(lastIndex)}</span>
+      );
+    }
+
+    return parts;
+  };
+
   return (
-    // The main element for the box.
-    // - flex-1: Makes both boxes take up equal space in the flex container on larger screens.
-    // - p-8: Adds padding inside the box.
-    // - rounded-3xl: Creates large, rounded corners.
-    // - text-white: Sets the text color to white.
-    // - bg-gradient-to-br from-purple-500/80 to-violet-700/80: Creates the purple gradient background.
-    //   The '/80' makes the colors 80% opaque, allowing the background waves to subtly show through.
-    // - shadow-lg: Adds a standard drop shadow for a lifting effect.
-    // - shadow-black/20: Makes the shadow color a semi-transparent black.
-    // - backdrop-blur-sm: Adds a blur effect to whatever is behind the component.
-    // - border border-white/20: Adds a subtle white border.
-    <div className="{Style}">
-      {/* Description Block */}
-      <p className="text-base leading-relaxed">{description}</p>
+
+    <div className={StyleInput}>
+     
+      <p className="text-base leading-relaxed">
+        {renderFormattedDescription()}
+      </p>
     </div>
   );
 };
