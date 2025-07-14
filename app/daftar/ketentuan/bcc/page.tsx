@@ -17,10 +17,10 @@ const page = () => {
         className="absolute bottom-0 left-0 w-[500x] h-[500px] md:w-[450px] md:h-[450px] -translate-x-[30%] translate-y-[30%] -z-10  "
       />
       <div className="p-10 md:p-16 lg:p-20 lg:px-32">
-        <h1 className="pb-4 text-center bg-gradient-to-b from-white via-[#FFAFDF] to-white text-transparent bg-clip-text font-bold text-3xl sm:text-5xl md:text-6xl lg:text-7xl mt-20">
+        <h1 className="pb-4 text-center bg-gradient-to-b from-white via-[#FFAFDF] to-white text-transparent bg-clip-text font-bold text-3xl sm:text-5xl md:text-6xl lg:text-7xl mt-20" data-aos="fade-up">
           Ketentuan Umum BCC
         </h1>
-        <div className="text-xs md:text-sm lg:text-base flex flex-col space-y-2 text-white/90 leading-relaxed text-shadow-lg/20 p-6 relative bg-gradient-to-bl from-[#BA46AB] to-[#4C174F] rounded-2xl border border-white/20">
+        <div className="text-xs md:text-sm lg:text-base flex flex-col space-y-2 text-white/90 leading-relaxed text-shadow-lg/20 p-6 relative bg-gradient-to-bl from-[#BA46AB] to-[#4C174F] rounded-2xl border border-white/20" data-aos="zoom-out">
           <p>
             1. Tim (kelompok) beranggotakan 2-3 orang mahasiswa aktif program
             Diploma/S1 di Indonesia. Setiap anggota tim dapat berasal dari
