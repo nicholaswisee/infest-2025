@@ -6,6 +6,7 @@ import FAQSection from "@/components/FAQSection";
 import Ornamen from "@/public/ornament2.svg";
 import Image from "next/image";
 import LongOrnamen from "@/public/ornament3.svg";
+import CountdownSection from "@/components/LaunchCountdown";
 
 const faqData: FAQItemData[] = [
   {
@@ -161,7 +162,9 @@ const page = () => {
         >
           Countdown
         </p>
-        <Countdown targetDate="2025-08-25T00:00:00" />
+        <div data-aos="fade-up">
+          <CountdownSection />
+        </div>
         <FAQSection faqData={faqData} />
       </div>
     </main>
