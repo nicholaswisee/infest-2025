@@ -42,7 +42,7 @@ const BoxComponent = ({ description, StyleInput } : {description : string, Style
 
   return (
 
-    <div className={StyleInput}>
+    <div className={StyleInput} data-aos="zoom-out">
      
       <p className="text-base leading-relaxed">
         {renderFormattedDescription()}
