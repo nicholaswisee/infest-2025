@@ -6,6 +6,8 @@ import FAQSection from "@/components/FAQSection";
 import Ornamen from "@/public/ornament1.svg";
 import Image from "next/image";
 import LongOrnamen from "@/public/ornament4.svg";
+import CountdownSection from "@/components/LaunchCountdown";
+import BoxComponent from "@/components/Box";
 
 const faqData: FAQItemData[] = [
   {
@@ -94,19 +96,17 @@ const page = () => {
         >
           Deskripsi
         </p>
-        <p
-          className="w-full mx-auto lg:w-[80%] xl:w-[60%] text-xs md:text-sm lg:text-base flex items-center text-white/90 leading-relaxed text-shadow-lg/20 p-6 relative bg-gradient-to-bl from-[#C18EFC] to-[#782DCD] rounded-2xl border border-white/20"
-          data-aos="zoom-out"
-        >
-          Para peserta akan diberikan kasus beserta data-data yang menunjang,
+        <BoxComponent 
+          description="Para peserta akan diberikan kasus beserta data-data yang menunjang,
           kemudian peserta harus memberikan solusi berupa strategi ataupun aksi
           untuk mengatasi permasalahan tersebut. Setelah kasus diberikan, para
           peserta diberikan waktu untuk melakukan analisis masalah dan
           memberikan solusi. Rangkuman hasil analisis peserta disajikan dalam
           bentuk slide deck dan executive summary, yang akan dinilai oleh para
           juri. Selanjutnya, 5 tim dengan poin tertinggi akan lanjut ke babak
-          final akan memberikan presentasi secara offline kepada para juri.
-        </p>
+          final akan memberikan presentasi secara offline kepada para juri."
+          StyleInput="w-full mx-auto lg:w-[80%] xl:w-[60%] text-xs md:text-sm lg:text-base flex items-center text-white/90 leading-relaxed text-shadow-lg/20 p-6 relative bg-gradient-to-bl from-[#C18EFC] to-[#782DCD] rounded-2xl border border-white/20"
+        />
 
         <div className="text-white mt-24" data-aos="zoom-out">
           <p className="text-center pb-4 bg-gradient-to-b from-white via-[#FFEED2] to-white text-transparent bg-clip-text font-bold text-3xl md:text-4xl lg:text-5xl">
@@ -160,7 +160,9 @@ const page = () => {
         >
           Countdown
         </p>
-        <Countdown targetDate="2025-08-25T00:00:00" />
+        <div data-aos="fade-up">
+          <CountdownSection />
+        </div>
         <FAQSection faqData={faqData} />
       </div>
     </main>

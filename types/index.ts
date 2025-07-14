@@ -6,7 +6,6 @@ export interface MockLinkProps {
   onClick: (event: MouseEvent<HTMLAnchorElement>) => void;
   className?: string;
 }
-
 export interface CardData {
   id: number;
   title: string;
@@ -31,3 +30,8 @@ export interface FAQItemData {
 export interface FAQSectionProps {
   faqData: FAQItemData[];
 }
+
+export type CountdownProps = {
+  targetDate: Date;
+  onFinish?: () => void;
+};
