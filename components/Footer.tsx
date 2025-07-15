@@ -79,37 +79,37 @@ const Footer = () => {
                 <div className="space-y-3">
                   <div>
                     <p className="text-sm md:text-base font-bold">
-                      Audie Quisha
+                      Timur Kanigara
                     </p>
                     <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
-                      <FaWhatsapp className="text-xs" /> 089536645252
+                      <FaWhatsapp className="text-xs" /> 081310191705
                     </p>
                     <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
-                      <FaLine className="text-xs" /> audiejee
+                      <FaLine className="text-xs" /> kanigara123
                     </p>
                   </div>
 
                   <div>
                     <p className="text-sm md:text-base font-bold ">
-                      Daffa Andika
+                      Adnan Said
                     </p>
                     <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
-                      <FaWhatsapp className="text-xs" /> 089584631728
+                      <FaWhatsapp className="text-xs" /> 082162129150
                     </p>
                     <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
-                      <FaLine className="text-xs" /> daffaandikaanya
+                      <FaLine className="text-xs" /> adnansaid15
                     </p>
                   </div>
 
                   <div>
                     <p className="text-sm md:text-base font-bold ">
-                      Patricia Auriela
+                      Kayla Ghaisani
                     </p>
                     <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
-                      <FaWhatsapp className="text-xs" /> 089652246656
+                      <FaWhatsapp className="text-xs" /> 085642246816
                     </p>
                     <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-start gap-1">
-                      <FaLine className="text-xs" /> patriciaauriela
+                      <FaLine className="text-xs" /> Gizaayy
                     </p>
                   </div>
                 </div>
@@ -122,25 +122,25 @@ const Footer = () => {
                 <div className="space-y-3">
                   <div>
                     <p className="text-sm md:text-base font-bold ">
-                      Reivaldo Joan
+                      Christopher Nathaniel
                     </p>
                     <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
-                      089534801385 <FaWhatsapp />
+                      081224424388 <FaWhatsapp />
                     </p>
                     <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
-                      vass270204 <FaLine />
+                      christopherssj4 <FaLine />
                     </p>
                   </div>
 
                   <div>
                     <p className="text-sm md:text-base  font-bold ">
-                      Vincent Andrew S.
+                      Anthony Alden
                     </p>
                     <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
-                      089604076107 <FaWhatsapp />
+                      081296368222 <FaWhatsapp />
                     </p>
                     <p className="text-xs md:text-sm text-gray-300 flex items-center justify-center md:justify-end gap-1">
-                      reivaldojoan210 <FaLine />
+                      aanthonyaldenth <FaLine />
                     </p>
                   </div>
                 </div>

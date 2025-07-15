@@ -120,7 +120,7 @@ const page = () => {
             </p>
             <p className="sm:text-lg md:text-xl lg:text-2xl font-bold text-shadow-lg">
               {" "}
-              Rp5.000.000,00 + e-certificate
+              Rp4.500.000,00 + e-certificate
             </p>
           </div>
           <div className="mt-5 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center">
@@ -130,7 +130,7 @@ const page = () => {
             </p>
             <p className="sm:text-lg md:text-xl lg:text-2xl font-bold text-shadow-lg">
               {" "}
-              Rp3.000.000,00 + e-certificate
+              Rp2.500.000,00 + e-certificate
             </p>
           </div>
           <div className="mt-5 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center">
@@ -140,7 +140,7 @@ const page = () => {
             </p>
             <p className="sm:*:text-lg md:text-xl lg:text-2xl font-bold text-shadow-lg">
               {" "}
-              Rp2.000.000,00 + e-certificate
+              Rp1.500.000,00 + e-certificate
             </p>
           </div>
         </div>
