@@ -52,7 +52,8 @@ const MainInfo = () => {
             >
               <span>
                 {" "}
-                Acara tahunan yang diselenggarakan oleh{" "}
+                <span className="font-[800] text-[#FFEED2]">INFEST atau Investment Festival </span>{" "}
+                adalah acara tahunan yang diselenggarakan oleh{" "}
                 <span className="font-[800] text-[#FFEED2]">KSEP ITB</span>{" "}
                 dengan tujuan memberikan edukasi mengenai investasi dan pasar
                 modal kepada mahasiswa dan masyarakat sekitar. Dimeriahkan

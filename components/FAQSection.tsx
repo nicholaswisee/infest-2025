@@ -2,7 +2,7 @@
 
 import { FAQuestionProps, FAQSectionProps } from "@/types/index";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const FAQuestion: React.FC<FAQuestionProps> = ({
   question,
@@ -46,7 +46,12 @@ const FAQuestion: React.FC<FAQuestionProps> = ({
             ${isOpen ? "delay-200 opacity-100" : "opacity-0"}
           `}
         >
-          {answer}
+      {answer.split("\n").map((line, index) => (
+    <React.Fragment key={index}>
+      {line}
+      <br />
+    </React.Fragment>
+  ))}
         </p>
       </div>
     </div>

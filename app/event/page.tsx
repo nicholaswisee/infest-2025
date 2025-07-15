@@ -43,16 +43,15 @@ const page = () => {
           >
             <span>
               {" "}
-              INFEST 2025, dengan tema{" "}
-              <span className="font-[800] text-[#FFEED2]">
-                "Navigating the Future: Smart Investment in the Times of
-                Changes,"{" "}
-              </span>
-              berfokus pada strategi investasi cerdas untuk menghadapi masa-masa
-              penuh perubahan. Acara ini akan membekali peserta dengan pola
-              pikir yang proaktif dan tangguh, serta membahas pemanfaatan
-              teknologi seperti AI dalam mengambil keputusan investasi di tengah
-              dinamika pasar dan krisis ekonomi.
+              Sebagai rangkaian pre-event dari INFEST 2025, workshop bertajuk 
+              <span className="font-[800] text-[#FFEED2]"> "Mastering the Written Pitch Deck: From Concept to Clarity" </span>
+              hadir untuk membawa para peserta melampaui pemahaman dasar dalam menyusun pitch deck. 
+              Dalam sesi ini, peserta akan dibekali dengan teknik merancang pitch deck tertulis 
+              yang tidak hanya terstruktur dan persuasif, tetapi juga selaras dengan standar 
+              penilaian profesional dan juri kompetisi. Melalui pendekatan studi kasus dan 
+              forum interaktif bersama para ahli, peserta akan berlatih menyusun narasi bisnis
+               yang kuat sekaligus mendapatkan wawasan dan umpan balik mendalam yang akan mengasah 
+               keterampilan mereka menuju kesiapan kompetisi yang optimal.
             </span>
           </p>
           <div
@@ -88,9 +87,10 @@ const page = () => {
           className="font-medium italic text-center text-white text-sm sm:text-base md:text-lg mt-2"
           data-aos="fade-down"
         >
-          Theme of Event
+          Coming Soon
         </p>
-        <div className="mt-5 md:mt-10 mx-auto flex flex-col md:flex-row md:items-center gap-4 md:w-[90%] lg:w-[70%]">
+
+        {/* <div className="mt-5 md:mt-10 mx-auto flex flex-col md:flex-row md:items-center gap-4 md:w-[90%] lg:w-[70%]">
           <p
             className="w-full md:w-2/3 text-xs md:text-sm lg:text-base flex items-center text-white/90 leading-relaxed text-shadow-lg/20 p-6 relative bg-gradient-to-bl from-[#C18EFC] to-[#782DCD] rounded-2xl border border-white/20"
             data-aos="fade-left"
@@ -122,7 +122,7 @@ const page = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <h1
           className="pb-10 text-center text-white font-bold text-3xl md:text-5xl lg:text-6xl mt-32"
