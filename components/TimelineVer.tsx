@@ -1,10 +1,6 @@
+import { TimelineEvent, TimelineProps } from "@/types";
 import React from "react";
 
-interface TimelineEvent {
-  id: number;
-  title: string;
-  date: string;
-}
 
 const timelineData: TimelineEvent[] = [
   { id: 1, title: "BCC Registration", date: "5-13 Juli 2025" },
@@ -16,7 +12,7 @@ const timelineData: TimelineEvent[] = [
   { id: 7, title: "Seminar Puncak", date: "25 Agustus 2025" },
 ];
 
-const TimelineVer: React.FC = () => {
+const TimelineVer: React.FC<TimelineProps> = ({timelineData}) => {
   return (
     <div className="w-full" data-aos="fade-up" data-aos-duration="3000">
       {/* Container utama untuk timeline */}
