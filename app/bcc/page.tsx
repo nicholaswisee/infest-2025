@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import TimelineVer from "@/components/TimelineVer";
 import Countdown from "@/components/Countdown";
-import { FAQItemData } from "@/types";
+import { FAQItemData, TimelineEvent } from "@/types";
 import FAQSection from "@/components/FAQSection";
 import Ornamen from "@/public/ornament1.svg";
 import Image from "next/image";
@@ -12,33 +12,64 @@ import BoxComponent from "@/components/Box";
 const faqData: FAQItemData[] = [
   {
     value: "faq-1",
-    question: "Bang Farrel kapan punya pacar?",
-    answer:
-      "Kompetisi ini terbuka untuk semua individu berusia 18 tahun ke atas. Tidak ada batasan latar belakang pendidikan atau profesi. Silakan lihat bagian 'Syarat dan Ketentuan' untuk detail lebih lanjut.",
+    question: "Apakah peserta dapat mengikuti Equity Research Competition dan Business Case Competition sekaligus?",
+    answer: "Ya, peserta diperbolehkan mengikuti 2 lomba sekaligus.",
   },
   {
     value: "faq-2",
-    question: "Bang Farrel punya pacar gak?",
-    answer: "Bang Farrel sigma",
+    question: "Apakah tim dapat memilih salah satu dari 3 pilihan emiten yang disediakan secara bebas?",
+    answer: "Ya, tim dapat memilih salah satu emiten secara bebas.",
   },
   {
     value: "faq-3",
-    question: "Wise Rizz banget ya?",
-    answer: `Farrel "Frallex" Athalla Putra and Nicholas "Kolak" Wise Saragih   `,
+    question: "Apakah dari pihak penyelenggara menyediakan biaya transport?",
+    answer:
+      "Biaya transportasi sepenuhnya ditanggung oleh peserta. Pihak penyelenggara tidak menyediakan biaya akomodasi untuk peserta di lokasi final karena hadiah yang ditawarkan sudah sesuai.",
   },
   {
     value: "faq-4",
-    question: "Apakah ada biaya pendaftaran?",
+    question: "Apakah seluruh peserta akan mendapatkan sertifikat?",
     answer:
-      "Tidak, pendaftaran untuk kompetisi ini sepenuhnya gratis. Kami ingin memastikan semua orang memiliki kesempatan yang sama untuk berpartisipasi.",
+      "Ya, semua peserta akan mendapatkannya. Sertifikat akan dikirimkan melalui e-mail ketua kelompok.",
   },
   {
     value: "faq-5",
-    question: "Mana redupnya, kapan redupnya",
+    question: "Di mana lokasi pelaksanaan kedua lomba?",
     answer:
-      "Eskeetit skrt skrrrttt Surabaya L City bruh Stanley Hao more like Stanley Who yo whaaaatttt Surabaya L City Lorem ipsum dolor sit amet Big Mo you are so goatet",
+      "Equity Research Competition dan Business Case Competition akan dilaksanakan secara online untuk babak penyisihan (dan babak kualifikasi untuk Business Case Competition). Babak final akan dilakukan secara onsite di Institut Teknologi Bandung.",
+  },
+  {
+    value: "faq-6",
+    question: "Berapa kelompok yang akan maju ke sesi final?",
+    answer: "Setelah melalui sesi preliminary, akan ada 5 kelompok yang maju ke sesi final.",
+  },
+  {
+    value: "faq-7",
+    question: "Sejak kapan tim dapat mulai mengerjakan paper?",
+    answer:
+      "Untuk Equity Research Competition, peserta dapat langsung mengerjakan setelah melakukan pembayaran. Sedangkan, untuk Business Case Competition, peserta baru dapat mengerjakan setelah case didistribusikan pada 25 Agustus 2025.",
   },
 ];
+
+const timelineDataBCC: TimelineEvent[] = [
+  { id: 1, title: "Early Bird Registration", date: "2-6 Agustus 2025" },
+  { id: 2, title: "Normal Registration", date: "7-15 Agustus 2025" },
+  { id: 3, title: "Technical Meeting", date: "22 Agustus 2025" },
+  { id: 4, title: "Pre-Event", date: "23 Agustus 2025" },
+  { id: 5, title: "Case Distribution", date: "25 Agustus 2025" },
+  { id: 6, title: "Preliminary Round", date: "25 Agustus - 3 September 2025" },
+  { id: 7, title: "Slide Deck Submission", date: "3 September 2025 (23.59)" },
+  { id: 8, title: "Pengumuman Final", date: "18 September 2025" },
+  { id: 9, title: "Persiapan Final Round", date: "18-25 September 2025" },
+  { id: 10, title: "Mentoring (Tentatif)", date: "20-21 September 2025" },
+  { id: 11, title: "Submission Final Deck", date: "25 September 2025" },
+  { id: 12, title: "Technical Meeting Finalis", date: "27 September 2025" },
+  { id: 13, title: "Presentasi Finalis & Pengumuman Juara", date: "4 Oktober 2025" },
+  { id: 14, title: "Company Visit", date: "TBA" },
+]
+
+const countdownEnd = new Date("2025-08-02T00:00:00");
+
 const page = () => {
   return (
     <main className="relative h-full min-h-screen w-full isolate overflow-hidden">
@@ -82,7 +113,7 @@ const page = () => {
         </p>
 
         <a
-          className="mt-10 md:mt-16 mx-auto w-fit text-sm md:text-base bg-gradient-to-r from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-6 py-2 sm:py-3 flex items-center gap-3"
+          className="mt-10 md:mt-16 mx-auto w-fit text-sm md:text-base bg-gradient-to-r from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-6 py-2 sm:py-3 flex items-center gap-3 "
           data-aos="fade-up"
           data-aos-anchor-placement="bottom-bottom" href="/daftar" 
         >
@@ -152,7 +183,7 @@ const page = () => {
           Timeline
         </p>
 
-        <TimelineVer />
+        <TimelineVer timelineData={timelineDataBCC}/>
 
         <p
           className="mb-5 md:mb-10 text-center pb-4 bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent bg-clip-text font-bold text-3xl md:text-4xl lg:text-5xl mt-28"
@@ -161,7 +192,7 @@ const page = () => {
           Countdown
         </p>
         <div data-aos="fade-up">
-          <CountdownSection />
+          <CountdownSection countdownEndDate={countdownEnd}/>
         </div>
         <FAQSection faqData={faqData} />
       </div>

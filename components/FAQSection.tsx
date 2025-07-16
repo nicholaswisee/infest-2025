@@ -16,20 +16,22 @@ const FAQuestion: React.FC<FAQuestionProps> = ({
 
   return (
     <div className="mb-2 xs:mb-4 rounded-3xl overflow-hidden shadow-lg">
-      <button
-        className="flex items-center justify-between w-full px-4 py-3 sm:px-7 sm:py-4 text-white font-semibold text-lg [background-image:linear-gradient(180deg,#936FBF_0%,#603394_100%)] transition-colors duration-200 focus:outline-none"
-        onClick={onClick}
-        aria-expanded={isOpen}
-        aria-controls={contentId}
-        id={triggerId}
-      >
-        <p className="text-sm md:text-base font-bold">{question}</p>
-        <ChevronDown
-          className={`h-6 w-6 text-white transform transition-transform duration-300 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        />
-      </button>
+    <button
+      className="flex items-start justify-between w-full px-4 py-3 sm:px-7 sm:py-4 text-white font-semibold text-lg [background-image:linear-gradient(180deg,#936FBF_0%,#603394_100%)] transition-colors duration-200 focus:outline-none hover:cursor-pointer"
+      onClick={onClick}
+      aria-expanded={isOpen}
+      aria-controls={contentId}
+      id={triggerId}
+    >
+      <p className="flex-1 text-left text-sm md:text-base font-bold break-words pr-4">
+        {question}
+      </p>
+      <ChevronDown
+        className={`h-6 w-6 text-white transform transition-transform duration-300 ${
+          isOpen ? "rotate-180" : ""
+        }`}
+      />
+    </button>
       <div
         id={contentId}
         role="region"

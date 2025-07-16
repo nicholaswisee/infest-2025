@@ -144,7 +144,7 @@ const EventCarousel: React.FC<EventCarouselProps> = ({ cards }) => {
 
   return (
     <div
-      className="relative w-full flex flex-col items-center justify-center py-16 bg-[#240046] px-4 overflow-hidden rounded-xl"
+      className="relative w-full flex flex-col items-center justify-center py-16 bg-[#240046] px-4 overflow-hidden rounded-xl select-none"
       data-aos="zoom-out"
     >
       <div className="absolute left-0 top-0 h-full w-12 sm:w-24 bg-gradient-to-r from-[#240046] via-[#240046]/40 to-transparent z-30 pointer-events-none" />

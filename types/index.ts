@@ -35,3 +35,13 @@ export type CountdownProps = {
   targetDate: Date;
   onFinish?: () => void;
 };
+
+export interface TimelineEvent {
+  id: number;
+  title: string;
+  date: string;
+}
+
+export interface TimelineProps {
+  timelineData: TimelineEvent[];
+}
