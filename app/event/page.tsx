@@ -1,5 +1,5 @@
 import EventCarousel from "@/components/Carousel";
-import { eventCards } from "@/data/event";
+import { lastYearHighlights } from "@/data/event";
 import Image from "next/image";
 import Bubble from "@/public/pink-bubble.svg";
 import Ornamen from "@/public/ornament5.svg";
@@ -133,7 +133,7 @@ const page = () => {
             Highlights
           </span>
         </h1>
-        <EventCarousel cards={eventCards} />
+        <EventCarousel cards={lastYearHighlights} buttons={false}/>
       </div>
     </div>
   );

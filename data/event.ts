@@ -26,3 +26,62 @@ export const eventCards: CardData[] = [
     link: "/erc",
   },
 ];
+
+export const lastYearHighlights: CardData[] = [
+    {
+    id: 1,
+    title: "",
+    description:"",
+    image: "/dokum4.JPG",
+    link: "",
+  },
+    {
+    id: 2,
+    title: "",
+    description:"",
+    image: "/dokum5.JPG",
+    link: "",
+  },
+  {
+    id: 3,
+    title: "",
+    description:"",
+    image: "/dokum6.JPG",
+    link: "",
+  },
+  {
+    id: 4,
+    title: "",
+    description:"",
+    image: "/dokum7.JPG",
+    link: "",
+  },
+  {
+    id: 5,
+    title: "",
+    description:"",
+    image: "/dokum8.JPG",
+    link: "",
+  },
+  {
+    id: 6,
+    title: "",
+    description:"",
+    image: "/dokum9.JPG",
+    link: "",
+  },
+  {
+    id: 7,
+    title: "",
+    description:"",
+    image: "/dokum10.JPG",
+    link: "",
+  },
+  {
+    id: 8,
+    title: "",
+    description:"",
+    image: "/dokum11.JPG",
+    link: "",
+  },
+]

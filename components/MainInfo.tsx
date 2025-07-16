@@ -96,7 +96,7 @@ const MainInfo = () => {
               Events
             </span>
           </h1>
-          <EventCarousel cards={eventCards} />
+          <EventCarousel cards={eventCards} buttons={true}/>
         </div>
       </div>
     </section>
