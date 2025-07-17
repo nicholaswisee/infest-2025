@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CardData } from "@/types";
 import Link from "next/link";
 import Aos from "aos";
+import Image from "next/image";
 
 interface EventCarouselProps {
   cards: CardData[];
@@ -187,7 +188,9 @@ const EventCarousel: React.FC<EventCarouselProps> = ({ cards, buttons }) => {
               onDragStart={(e) => e.preventDefault()}
             >
               <div className="relative w-full h-full max-w-[450px] md:max-w-[550px] mx-auto rounded-2xl overflow-hidden shadow-2xl">
-                <img
+                <Image
+                  width={1000}
+                  height={1000}
                   src={card.image}
                   alt={card.title}
                   className="absolute inset-0 w-full h-full object-cover"

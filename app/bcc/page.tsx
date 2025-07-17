@@ -58,7 +58,7 @@ const timelineDataBCC: TimelineEvent[] = [
   { id: 4, title: "Pre-Event", date: "23 Agustus 2025" },
   { id: 5, title: "Case Distribution", date: "25 Agustus 2025" },
   { id: 6, title: "Preliminary Round", date: "25 Agustus - 3 September 2025" },
-  { id: 7, title: "Slide Deck Submission", date: "3 September 2025 (23.59)" },
+  { id: 7, title: "Slide Deck Submission", date: "3 September 2025" },
   { id: 8, title: "Pengumuman Final", date: "18 September 2025" },
   { id: 9, title: "Persiapan Final Round", date: "18-25 September 2025" },
   { id: 10, title: "Mentoring (Tentatif)", date: "20-21 September 2025" },
@@ -107,9 +107,8 @@ const page = () => {
           Business Case Competition merupakan kompetisi yang menguji kemampuan <span className="font-[800] text-[#FFEED2]">
              problem solving dan analytical thinking dalam konteks bisnis.
           </span>{" "}
-          Business Case Competition akan terbagi menjadi 3 babak, yakni babak
-          kualifikasi (qualification round), babak penyisihan (preliminary
-          stage) dan babak final (final round).
+          Business Case Competition akan terbagi menjadi 2 babak, yakni babak penyisihan
+          (preliminary stage) dan babak final (final round).
         </p>
 
         <a
