@@ -29,6 +29,7 @@ export const metadata: Metadata = {
   },
   description: "INFEST (Investment Festival) is an annual event organized by KSEP ITB, dedicated to educating students and the public about investing and the capital market.",
   keywords: [
+    "infest",
     "INFEST",
     "INFEST ITB",
     "Investment Festival",
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
     siteName: "INFEST ITB 2025",
     images: [
       {
-        url: `https://infestbdg.com/logo-ksep.svg`,
+        url: `https://infestbdg.com/logo-ksep.png`,
         width: 1200,
         height: 630,
         alt: "INFEST ITB 2025 - Investment Festival",
@@ -74,6 +75,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "INFEST ITB 2025 - Investment Festival ITB",
     description: "INFEST (Investment Festival) is an annual event organized by KSEP ITB, dedicated to educating students and the public about investing and the capital market.",
+    images: [
+      {
+        url: `https://infestbdg.com/logo-ksep.png`,
+        width: 1200,
+        height: 630,
+        alt: "INFEST ITB 2025 - Investment Festival",
+      },
+    ],
   },
 };
 
