@@ -63,17 +63,17 @@ const page = () => {
                 Pre Event 1
               </p>
               <p className="text-xs sm:text-sm md:text-base lg:text-lg">
-                10 Agustus 2025
+                23 Agustus 2025
               </p>
             </div>
-            <div className="text-center flex-1 md:flex-none w-full text-xs md:text-sm lg:text-base text-black leading-relaxed text-shadow-lg/10 p-4 md:p-6 relative bg-gradient-to-bl from-[#E7E0EE] to-[#9A8FA5] rounded-2xl border border-white/20">
+            {/* <div className="text-center flex-1 md:flex-none w-full text-xs md:text-sm lg:text-base text-black leading-relaxed text-shadow-lg/10 p-4 md:p-6 relative bg-gradient-to-bl from-[#E7E0EE] to-[#9A8FA5] rounded-2xl border border-white/20">
               <p className="font-extrabold sm:text-lg md:text-xl lg:text-2xl">
                 Pre Event 1
               </p>
               <p className="text-xs sm:text-sm md:text-base lg:text-lg">
                 10 Agustus 2025
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
 

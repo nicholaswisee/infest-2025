@@ -10,7 +10,7 @@ const faqData: FAQItemData[] = [
     value: "faq-1",
     question: "Kapan INFEST 2025 diselenggarakan?",
     answer:
-      "Rangkaian INFEST 2025 akan berlangsung pada 4 Oktober 2025 (akan diumumkan secara resmi melalui media sosial INFEST). Terdiri dari tahap pendaftaran, babak penyisihan, hingga final dan Gala Dinner.",
+      "Rangkaian INFEST 2025 akan berlangsung dari Juli hingga Oktober dengan Main Event pada 4 Oktober 2025 (akan diumumkan secara resmi melalui media sosial INFEST). Terdiri dari tahap pendaftaran, babak penyisihan, hingga final dan Gala Dinner.",
   },
   {
     value: "faq-2",
@@ -19,7 +19,7 @@ const faqData: FAQItemData[] = [
   },
   {
     value: "faq-3",
-    question: "Apa saja benefit mengikuti INFEST 2025?",
+    question: "Apa saja benefit mengikuti kompetisi INFEST 2025?",
     answer: `- Sertifikat peserta & finalis nasional
   - Hadiah jutaan rupiah untuk pemenang
   -  Insight langsung dari praktisi industri, juri profesional, dan alumni kompetisi ternama
@@ -37,12 +37,12 @@ const faqData: FAQItemData[] = [
     value: "faq-5",
     question: "Apakah lomba INFEST 2025 diselenggarakan secara online atau offline?",
     answer:
-"Beberapa tahap lomba diselenggarakan secara online (seperti penyisihan), sementara tahap final dan awarding direncanakan berlangsung secara offline di Institut Teknologi Bandung."
+    "Beberapa tahap lomba diselenggarakan secara online (seperti penyisihan), sementara tahap final dan awarding direncanakan berlangsung secara offline di Institut Teknologi Bandung."
 }, {
     value: "faq-6",
     question: "Siapa saja speaker di INFEST 2025?",
     answer:
-"Nantikan pembicara-pembicara inspiratif dari berbagai latar belakang—mulai dari praktisi industri, profesional pasar modal, konsultan bisnis, hingga alumni berprestasi! Daftar lengkap speaker akan diumumkan secara bertahap di media sosial @infest.bdg. Stay tuned karena kamu gak mau ketinggalan yang satu ini!"
+    "Nantikan pembicara-pembicara inspiratif dari berbagai latar belakang—mulai dari praktisi industri, profesional pasar modal, konsultan bisnis, hingga alumni berprestasi! Daftar lengkap speaker akan diumumkan secara bertahap di media sosial @infest.bdg. Stay tuned karena kamu gak mau ketinggalan yang satu ini!"
 }];
 
 const TimelineSec = () => {

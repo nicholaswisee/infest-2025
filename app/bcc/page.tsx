@@ -17,11 +17,6 @@ const faqData: FAQItemData[] = [
     answer: "Ya, peserta diperbolehkan mengikuti 2 lomba sekaligus.",
   },
   {
-    value: "faq-2",
-    question: "Apakah tim dapat memilih salah satu dari 3 pilihan emiten yang disediakan secara bebas?",
-    answer: "Ya, tim dapat memilih salah satu emiten secara bebas.",
-  },
-  {
     value: "faq-3",
     question: "Apakah dari pihak penyelenggara menyediakan biaya transport?",
     answer:
