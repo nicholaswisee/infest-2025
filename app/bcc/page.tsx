@@ -1,13 +1,14 @@
 import { ArrowRight } from "lucide-react";
 import TimelineVer from "@/components/TimelineVer";
 import Countdown from "@/components/Countdown";
-import { FAQItemData } from "@/types";
+import { FAQItemData, Prizepool, PrizeItem} from "@/types";
 import FAQSection from "@/components/FAQSection";
 import Ornamen from "@/public/ornament1.svg";
 import Image from "next/image";
 import LongOrnamen from "@/public/ornament4.svg";
 import CountdownSection from "@/components/LaunchCountdown";
 import BoxComponent from "@/components/Box";
+import Prizepoolcomponent from "@/components/Prizepool";
 
 const faqData: FAQItemData[] = [
   {
@@ -39,6 +40,27 @@ const faqData: FAQItemData[] = [
       "Eskeetit skrt skrrrttt Surabaya L City bruh Stanley Hao more like Stanley Who yo whaaaatttt Surabaya L City Lorem ipsum dolor sit amet Big Mo you are so goatet",
   },
 ];
+
+const prizepoolbcc: Prizepool[] = [
+  {
+    position: "Juara 1",
+    prize: "Rp5.000.000,00 + e-certificate",
+  },
+  { position: "Juara 2",
+    prize: "Rp3.000.000,00 + e-certificate", 
+  },
+  { position: "Juara 3",
+    prize: "Rp2.000.000,00 + e-certificate",
+  },  
+]; 
+
+// Mapping gradient per juara
+const gradientClasses = [
+  "bg-gradient-to-b from-amber-400/70 to-yellow-400/70",
+  "bg-gradient-to-b from-zinc-400/70 to-gray-200/70",
+  "bg-gradient-to-b from-[#C0A67B]/70 to-[#FFEED2]/70",
+];
+
 const page = () => {
   return (
     <main className="relative h-full min-h-screen w-full isolate overflow-hidden">
@@ -113,36 +135,13 @@ const page = () => {
             {" "}
             Prize Pool{" "}
           </p>
-          <div className="mt-3 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center">
-            <p className="md:text-lg lg:text-xl font-bold px-5 md:px-9 py-2 md:py-3 bg-gradient-to-b from-amber-400/70 to-yellow-400/70 rounded-full shadow-[inset_0px_10px_18.799999237060547px_0px_rgba(166,143,194,1.00)]">
-              {" "}
-              Juara 1
-            </p>
-            <p className="sm:text-lg md:text-xl lg:text-2xl font-bold text-shadow-lg">
-              {" "}
-              Rp5.000.000,00 + e-certificate
-            </p>
-          </div>
-          <div className="mt-5 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center">
-            <p className="md:text-lg lg:text-xl font-bold px-5 md:px-9 py-2 md:py-3 bg-gradient-to-b from-zinc-400/70 to-gray-200/70 rounded-full shadow-[inset_0px_10px_18.799999237060547px_0px_rgba(166,143,194,1.00)]">
-              {" "}
-              Juara 2
-            </p>
-            <p className="sm:text-lg md:text-xl lg:text-2xl font-bold text-shadow-lg">
-              {" "}
-              Rp3.000.000,00 + e-certificate
-            </p>
-          </div>
-          <div className="mt-5 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center">
-            <p className="md:text-lg lg:text-xl font-bold px-5 md:px-9 py-2 md:py-3 bg-gradient-to-b from-[#C0A67B]/70 to-[#FFEED2]/70 rounded-full shadow-[inset_0px_10px_18.799999237060547px_0px_rgba(166,143,194,1.00)]">
-              {" "}
-              Juara 3
-            </p>
-            <p className="sm:*:text-lg md:text-xl lg:text-2xl font-bold text-shadow-lg">
-              {" "}
-              Rp2.000.000,00 + e-certificate
-            </p>
-          </div>
+          {prizepoolbcc.map((item, index) => (
+            <Prizepoolcomponent
+              key={index}
+              data={item}
+              gradientClass={gradientClasses[index]}
+            />
+          ))}
         </div>
         <p
           className="mb-10 text-center pb-4 bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent bg-clip-text font-bold text-3xl md:text-4xl lg:text-5xl mt-24"
