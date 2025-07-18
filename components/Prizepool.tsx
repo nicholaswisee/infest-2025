@@ -1,9 +1,9 @@
 "use client";
 
 import React from 'react';
-import { Prizepool, PrizeItem } from "@/types"; 
+import { PrizepoolData, PrizeItem } from "@/types"; 
 
-export default function Prizepoolcomponent({data, gradientClass}: PrizeItem){
+export default function Prizepool({data, gradientClass}: PrizeItem){
   return (
      <div className="mt-5 flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center">
         <p

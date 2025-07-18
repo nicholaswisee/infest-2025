@@ -36,13 +36,13 @@ export type CountdownProps = {
   onFinish?: () => void;
 };
 
-export type Prizepool = {
+export type PrizepoolData = {
   position : string;
   prize: string;
 };
 
 export type PrizeItem = {
-  data: Prizepool;
+  data: PrizepoolData;
   gradientClass: string;
 }
 

@@ -1,14 +1,14 @@
 import { ArrowRight } from "lucide-react";
 import TimelineVer from "@/components/TimelineVer";
 import Countdown from "@/components/Countdown";
-import { FAQItemData, Prizepool, PrizeItem, TimelineEvent } from "@/types";
+import { FAQItemData, PrizepoolData, PrizeItem, TimelineEvent } from "@/types";
 import FAQSection from "@/components/FAQSection";
 import Ornamen from "@/public/ornament2.svg";
 import Image from "next/image";
 import LongOrnamen from "@/public/ornament3.svg";
 import CountdownSection from "@/components/LaunchCountdown";
 import BoxComponent from "@/components/Box";
-import Prizepoolcomponent from "@/components/Prizepool";
+import Prizepool from "@/components/Prizepool";
 
 const faqData: FAQItemData[] = [
   {
@@ -54,7 +54,7 @@ const faqData: FAQItemData[] = [
   },
 ];
 
-const prizepoolerc: Prizepool[] = [
+const prizepoolerc: PrizepoolData[] = [
   {
     position: "Juara 1",
     prize: "Rp4.500.000,00 + e-certificate",
@@ -167,7 +167,7 @@ const page = () => {
             Prize Pool{" "}
           </p>
           {prizepoolerc.map((item, index) => (
-            <Prizepoolcomponent
+            <Prizepool
               key={index}
               data={item}
               gradientClass={gradientClasses[index]}
