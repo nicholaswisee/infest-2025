@@ -36,6 +36,16 @@ export type CountdownProps = {
   onFinish?: () => void;
 };
 
+export type Prizepool = {
+  position : string;
+  prize: string;
+};
+
+export type PrizeItem = {
+  data: Prizepool;
+  gradientClass: string;
+}
+
 export interface TimelineEvent {
   id: number;
   title: string;
@@ -45,3 +55,4 @@ export interface TimelineEvent {
 export interface TimelineProps {
   timelineData: TimelineEvent[];
 }
+
