@@ -4,12 +4,14 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CardData } from "@/types";
 import Link from "next/link";
 import Aos from "aos";
+import Image from "next/image";
 
 interface EventCarouselProps {
   cards: CardData[];
+  buttons: boolean;
 }
 
-const EventCarousel: React.FC<EventCarouselProps> = ({ cards }) => {
+const EventCarousel: React.FC<EventCarouselProps> = ({ cards, buttons }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   // Refs for tracking drag/swipe state
@@ -144,7 +146,7 @@ const EventCarousel: React.FC<EventCarouselProps> = ({ cards }) => {
 
   return (
     <div
-      className="relative w-full flex flex-col items-center justify-center py-16 bg-[#240046] px-4 overflow-hidden rounded-xl"
+      className="relative w-full flex flex-col items-center justify-center py-16 bg-[#240046] px-4 overflow-hidden rounded-xl select-none"
       data-aos="zoom-out"
     >
       <div className="absolute left-0 top-0 h-full w-12 sm:w-24 bg-gradient-to-r from-[#240046] via-[#240046]/40 to-transparent z-30 pointer-events-none" />
@@ -186,7 +188,9 @@ const EventCarousel: React.FC<EventCarouselProps> = ({ cards }) => {
               onDragStart={(e) => e.preventDefault()}
             >
               <div className="relative w-full h-full max-w-[450px] md:max-w-[550px] mx-auto rounded-2xl overflow-hidden shadow-2xl">
-                <img
+                <Image
+                  width={1000}
+                  height={1000}
                   src={card.image}
                   alt={card.title}
                   className="absolute inset-0 w-full h-full object-cover"
@@ -203,14 +207,14 @@ const EventCarousel: React.FC<EventCarouselProps> = ({ cards }) => {
                     </p>
                   </div>
 
-                  <Link
+                    {buttons && <Link
                     href={card.link}
                     // Prevent navigation during a drag, but allow click when not dragging
                     onClick={(e) => isDragging.current && e.preventDefault()}
                     className="absolute bottom-6 right-6 md:bottom-8 md:right-8 w-fit bg-gradient-to-r from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-4 md:px-6 py-2 sm:py-3 transition-all duration-300 hover:scale-105 text-xs sm:text-sm md:text-base"
                   >
                     See More
-                  </Link>
+                  </Link>}
                 </div>
               </div>
             </div>

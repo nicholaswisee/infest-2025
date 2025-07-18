@@ -45,10 +45,10 @@ const Countdown : React.FC<CountdownProps> = ({targetDate, onFinish}) => {
         .padStart(2, "0");
     const seconds = (timeLeft % 60).toString().padStart(2, "0");
     return (
-        <div className={`${openSans.className} flex justify-center gap-12 text-5xl md:text-7xl leading-[35px] rounded-4xl font-normal tracking-[1%] text-center text-white`}>
+        <div className={`${openSans.className} flex justify-center gap-6 text-2xl md:text-7xl leading-[35px] rounded-4xl font-normal tracking-[1%] text-center text-white`}>
             <div className="text-center">
                 <p>{days}</p>
-                <span className="text-xl text-white">Hours</span>
+                <span className="text-xl text-white">Days</span>
             </div>
             <div className="text-center">
                 <p>{hours}</p>

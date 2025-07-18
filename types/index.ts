@@ -45,3 +45,14 @@ export type PrizeItem = {
   data: Prizepool;
   gradientClass: string;
 }
+
+export interface TimelineEvent {
+  id: number;
+  title: string;
+  date: string;
+}
+
+export interface TimelineProps {
+  timelineData: TimelineEvent[];
+}
+

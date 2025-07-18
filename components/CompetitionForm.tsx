@@ -367,9 +367,6 @@ const CompetitionForm = ({
                   <option className="bg-[#401B67]" value="Gopay">
                     Gopay
                   </option>
-                  <option className="bg-[#401B67]" value="Mandiri">
-                    Mandiri
-                  </option>
                 </select>
               </div>
               <FileInput

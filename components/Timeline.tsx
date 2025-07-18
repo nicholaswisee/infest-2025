@@ -10,28 +10,30 @@ interface TimelineEvent {
 }
 
 const timelineData: TimelineEvent[] = [
-  { id: 1, title: "BCC Registration", date: "5-13 Juli 2025", position: "top" },
+  { id: 1, title: "ERC Registration", date: "20 Juli - 1 Agustus 2025", position: "top" },
   {
     id: 2,
-    title: "ERC Registration",
-    date: "14-22 Juli 2025",
+    title: "BCC Registration",
+    date: "2-15 Agustus 2025",
     position: "bottom",
   },
-  { id: 3, title: "Workshop Day 1", date: "28 Juli 2025", position: "top" },
+  { id: 3, title: "Pengerjaan Paper ERC", date: "9 - 31 Agustus 2025", position: "top" },
   {
     id: 4,
-    title: "Workshop Day 2",
-    date: "4 Agustus 2025",
+    title: "Preliminary Round BCC",
+    date: "15 Agustus - 3 September 2025",
     position: "bottom",
   },
   {
     id: 5,
-    title: "Technical Meeting",
-    date: "11 Agustus 2025",
+    title: "Pre-Event",
+    date: "23 Agustus 2025",
     position: "top",
   },
-  { id: 6, title: "Grand Final", date: "18 Agustus 2025", position: "bottom" },
-  { id: 7, title: "Seminar Puncak", date: "25 Agustus 2025", position: "top" },
+  { id: 6, title: "Pengumuman Finalis ERC", date: "15 September 2025", position: "bottom" },
+  { id: 7, title: "Pengumuman Finalis BCC", date: "18 September 2025", position: "top" },
+  { id: 8, title: "Main Event INFEST 2025", date: "4 Oktober 2025", position: "bottom" },
+  { id: 9, title: "Presentasi ERC & BCC", date: "4 Oktober 2025", position: "top" },
 ];
 
 const Timeline: React.FC = () => {

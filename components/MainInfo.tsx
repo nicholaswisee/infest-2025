@@ -22,14 +22,14 @@ const MainInfo = () => {
           className="absolute top-[40%] sm:top-[30%] md:top-[15%] right-0 w-[300px] h-[300px] md:w-[450px] md:h-[450px] translate-x-[40%] -z-10"
           data-aos="fade-left"
         />
-        <p className="text-xs xs:text-sm md:text-base text-white text-center">
+        {/* <p className="text-xs xs:text-sm md:text-base text-white text-center">
           Sponsored by
         </p>
         <div className="flex gap-10 justify-center mt-4 md:mt-8">
           <h1 className="font-black md:text-3xl text-white">SPONSOR</h1>
           <h1 className="font-black md:text-3xl text-white">SPONSOR</h1>
           <h1 className="font-black md:text-3xl text-white">SPONSOR</h1>
-        </div>
+        </div> */}
         <Image
           src={Element}
           alt="Element"
@@ -74,16 +74,15 @@ const MainInfo = () => {
             >
               <span>
                 {" "}
-                INFEST 2025, dengan tema{" "}
-                <span className="font-[800] text-[#FFEED2]">
-                  "Navigating the Future: Smart Investment in the Times of
-                  Changes,"{" "}
-                </span>
-                berfokus pada strategi investasi cerdas untuk menghadapi
-                masa-masa penuh perubahan. Acara ini akan membekali peserta
-                dengan pola pikir yang proaktif dan tangguh, serta membahas
-                pemanfaatan teknologi seperti AI dalam mengambil keputusan
-                investasi di tengah dinamika pasar dan krisis ekonomi.
+                  INFEST 2025 mengangkat grand theme 
+                <span className="font-[800] text-[#FFEED2]"> “Navigating the Future: Smart Investment in the Times of Changes”. </span>
+                  
+                  Melalui tema ini, INFEST 2025 mengajak peserta untuk
+                   mengeksplorasi strategi investasi yang tepat di tengah ketidakpastian, 
+                   serta membentuk pola pikir yang resilien dan proaktif dalam menghadapi 
+                   perubahan. Mulai dari pemanfaatan teknologi seperti Artificial Intelligence 
+                   dalam pengambilan keputusan investasi, hingga cara berpikir yang tepat saat 
+                   menghadapi krisis ekonomi dan dinamika pasar modal di masa sulit.
               </span>
             </p>
           </div>
@@ -97,7 +96,7 @@ const MainInfo = () => {
               Events
             </span>
           </h1>
-          <EventCarousel cards={eventCards} />
+          <EventCarousel cards={eventCards} buttons={true}/>
         </div>
       </div>
     </section>
