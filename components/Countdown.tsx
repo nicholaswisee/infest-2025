@@ -37,7 +37,7 @@ const Countdown : React.FC<CountdownProps> = ({targetDate, onFinish}) => {
     const days = Math.floor(timeLeft / 86400)
         .toString()
         .padStart(2, "0");
-    const hours = Math.floor((timeLeft / 86400)/ 3600)
+    const hours = Math.floor((timeLeft % 86400) / 3600)
         .toString()
         .padStart(2, "0");
     const minutes = Math.floor((timeLeft % 3600) / 60)

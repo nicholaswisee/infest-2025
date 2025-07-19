@@ -21,7 +21,7 @@ const timelineData: TimelineEvent[] = [
   {
     id: 4,
     title: "Preliminary Round BCC",
-    date: "15 Agustus - 3 September 2025",
+    date: "25 Agustus - 3 September 2025",
     position: "bottom",
   },
   {

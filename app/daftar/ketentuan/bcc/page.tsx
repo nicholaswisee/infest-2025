@@ -48,9 +48,8 @@ const page = () => {
             sesuai mekanisme pendaftaran.
           </p>
           <p>
-            8. Peserta wajib mengikuti akun Instagram @casecollaborator (blm
-            ada) dan @infest.bdg untuk mendapatkan informasi mengenai
-            perlombaan.
+            8. Peserta wajib mengikuti akun Instagram @infest.bdg untuk mendapatkan 
+            informasi mengenai perlombaan.
           </p>
           <p>
             9. Peserta wajib mem-posting twibbon yang disediakan oleh panitia
@@ -94,7 +93,13 @@ const page = () => {
             Kembali
           </Link>
           <Link
-            href="/daftar/bcc"
+            href="https://bit.ly/BCCGuidebookINFEST25"
+            className="hover:scale-105 duration-300 transition-all text-xs sm:text-sm md:text-base text-center bg-gradient-to-r from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-3 sm:px-6 py-2 sm:py-3"
+          >
+            Guidebook
+          </Link>
+          <Link
+            href="https://bit.ly/RegistBCCINFEST2025"
             className="hover:scale-105 duration-300 transition-all text-xs sm:text-sm md:text-base text-center bg-gradient-to-r from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-3 sm:px-6 py-2 sm:py-3"
           >
             Daftar Sekarang
