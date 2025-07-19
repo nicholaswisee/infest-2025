@@ -22,7 +22,7 @@ const page = () => {
         </h1>
         <div className="text-xs md:text-sm lg:text-base flex flex-col space-y-2 text-white/90 leading-relaxed text-shadow-lg/20 p-6 relative bg-gradient-to-bl from-[#BA46AB] to-[#4C174F] rounded-2xl border border-white/20" data-aos="zoom-out">
           <p>
-            1. TTim (kelompok) beranggotakan 2-3 orang mahasiswa aktif program 
+            1. Tim (kelompok) beranggotakan 2-3 orang mahasiswa aktif program 
             Diploma/S1 di Indonesia. Setiap anggota tim dapat berasal dari universitas
             yang sama maupun berbeda.
           </p>

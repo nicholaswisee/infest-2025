@@ -84,10 +84,11 @@ const timelineDataERC: TimelineEvent[] = [
   { id: 6, title: "Paper Submission", date: "31 Agustus 2025" },
   { id: 7, title: "Pengumuman Finalis", date: "15 September 2025" },
   { id: 8, title: "Pengerjaan Final Deck", date: "15-29 September 2025" },
-  { id: 9, title: "Pengumpulan Final Deck", date: "29 September 2025" },
-  { id: 10, title: "Technical Meeting Finalis", date: "30 September 2025" },
-  { id: 11, title: "Presentasi Finalis & Pengumuman Juara", date: "4 Oktober 2025" },
-  { id: 12, title: "Company Visit", date: "TBA" },
+  { id: 9, title: "Mentoring (tentatif)", date: "19-24 September 2025" },
+  { id: 10, title: "Pengumpulan Final Deck", date: "29 September 2025" },
+  { id: 11, title: "Technical Meeting Finalis", date: "30 September 2025" },
+  { id: 12, title: "Presentasi Finalis & Pengumuman Juara", date: "4 Oktober 2025" },
+  { id: 13, title: "Company Visit", date: "TBA" },
 ]
 
 const countdownEnd = new Date("2025-07-20T00:00:00");

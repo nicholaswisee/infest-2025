@@ -76,7 +76,7 @@ const timelineDataBCC: TimelineEvent[] = [
   { id: 7, title: "Slide Deck Submission", date: "3 September 2025" },
   { id: 8, title: "Pengumuman Final", date: "18 September 2025" },
   { id: 9, title: "Persiapan Final Round", date: "18-25 September 2025" },
-  { id: 10, title: "Mentoring (Tentatif)", date: "20-21 September 2025" },
+  { id: 10, title: "Mentoring (Tentatif)", date: "19-24 September 2025" },
   { id: 11, title: "Submission Final Deck", date: "25 September 2025" },
   { id: 12, title: "Technical Meeting Finalis", date: "27 September 2025" },
   { id: 13, title: "Presentasi Finalis & Pengumuman Juara", date: "4 Oktober 2025" },
