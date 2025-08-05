@@ -1,49 +1,46 @@
-"use server";
+'use server'
 
-import { error } from "console";
-import { z } from "zod";
-import { createSession, deleteSession } from "../lib/session";
-import { redirect } from "next/navigation";
+import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
 
-const testUser = {
-    id: "1",
-    email: "nicholasaragih@gmail.com",
-    password: "infestgacor",
-    namaTim: "dhobyghaut"
+import { createClient } from '@/utils/supabase/server'
+
+export async function login(formData: FormData) {
+  const supabase = await createClient()
+
+  // type-casting here for convenience
+  // in practice, you should validate your inputs
+  const data = {
+    email: formData.get('email') as string,
+    password: formData.get('password') as string,
+  }
+
+  const { error } = await supabase.auth.signInWithPassword(data)
+
+  if (error) {
+    redirect('/error')
+  }
+
+  revalidatePath('/', 'layout')
+  redirect('/')
 }
 
-const loginSchema = z.object({
-  email: z.string().email({message: "Email tidak valid"}).trim(),
-  password: z.string().min(8, {message: "Password minimal 8 karakter"}).trim(),
-});
+export async function signup(formData: FormData) {
+  const supabase = await createClient()
 
+  // type-casting here for convenience
+  // in practice, you should validate your inputs
+  const data = {
+    email: formData.get('email') as string,
+    password: formData.get('password') as string,
+  }
 
-export async function login(prevState: any, formData: FormData) {
-    const res = loginSchema.safeParse(Object.fromEntries(formData));
-    if (!res.success) {
-        return {
-            errors: res.error.flatten().fieldErrors,
-        }
-    }
+  const { error } = await supabase.auth.signUp(data)
 
-    const { email, password } = res.data
+  if (error) {
+    redirect('/error')
+  }
 
-    if (email !== testUser.email || password !== testUser.password) {
-        return {
-            errors: {
-                email: ["Email atau password salah"],
-            }
-        }
-    }
-
-    await createSession(testUser.id);
-
-    redirect("/")
-
-};
-
-export async function logout() {
-    await deleteSession();
-    redirect("/login");
+  revalidatePath('/', 'layout')
+  redirect('/')
 }
-
