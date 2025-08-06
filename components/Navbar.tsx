@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Logo from "@/public/logo-ksep.png";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { User } from "@/types";
-import { logout } from "@/app/login/actions";
+import { createClient } from "@/utils/supabase/client";
+import { truncateString } from "@/utils/utils";
 interface NavLink {
   name: string;
   href: string;
@@ -52,52 +52,75 @@ const CloseIcon = ({ className = "" }) => (
   </svg>
 );
 
-
 const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<any>(null);
+  const [userProfile, setUserProfile] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const lastScrollY = useRef(0);
+  const supabase = createClient();
+  
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        
+        if (user) {
+          setUser(user);
+          
+          // Fetch user profile from your custom User table
+          const { data: profile, error: profileError } = await supabase
+            .from('User') 
+            .select('*')
+            .eq('id', user.id)
+            .single();
+            
+          if (profileError) {
+            console.error('Error fetching user profile:', profileError);
+          } else {
+            setUserProfile(profile);
+          }
+        } else {
+          setUser(null);
+          setUserProfile(null);
+        }
+      } catch (error) {
+        console.error('Error fetching user:', error);
+        setUser(null);
+        setUserProfile(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const checkSession = async () => {
+    fetchUser();
+  }, []);
+
+
+  // Handle logout function
+  const handleLogout = async () => {
     try {
-      const res = await fetch('/api/session')
-      if (res.ok) {
-        const userData = await res.json();
-        setUser(userData);
+      setIsLoading(true);
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error('Logout error:', error);
       } else {
         setUser(null);
+        setUserProfile(null);
+        router.push('/');
       }
-    } catch (err) {
-      console.error("Error checking session", err);
-      setUser(null);
+    } catch (error) {
+      console.error('Logout error:', error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
+      setMobileMenuOpen(false);
     }
-  }
- 
-  useEffect( () => {   
-    checkSession();
-
-    const handleAuthChange = () => {
-      checkSession();
-    }
-
-    window.addEventListener('auth-change', handleAuthChange);
-    return () => {
-      window.removeEventListener('auth-change', handleAuthChange);
-    };
-  }, [])
-
-  const handleLogout = async () => {
-    await logout();
-    setUser(null);
-    setMobileMenuOpen(false);
-
-    window.dispatchEvent(new Event('auth-change'))
-  }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -120,11 +143,33 @@ const Navbar = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   useEffect(() => {
     Aos.init({
       duration: 1000,
     });
   }, []);
+
+  // Function to get display name
+  const getDisplayName = () => {
+    if (!user) return '';
+    
+    let name = '';
+    
+    if (userProfile) {
+      name = userProfile.teamName;
+    } else {
+      // Fallback to auth user data
+      name = user.user_metadata?.name || 
+               user.user_metadata?.full_name || 
+               user.email?.split('@')[0] || 
+               'User';
+    }
+    
+    // Truncate the name if it's longer than a certain number of characters
+    return truncateString(name, 10); // Adjust 10 to your desired max length
+  };
+
   return (
     <>
       <header
@@ -170,9 +215,9 @@ const Navbar = () => {
           ) : user ? (
             <button
               onClick={handleLogout}
-              className="hidden md:flex items-center bg-gradient-to-r from-[#D9D9D9] to-[#C2A1E9] text-[#420C81] font-bold rounded-full transition-transform duration-300 hover:scale-105 py-2 px-8"
+              className="hidden md:flex cursor-pointer items-center bg-gradient-to-r from-[#D9D9D9] to-[#C2A1E9] text-[#420C81] font-bold rounded-full transition-transform duration-300 hover:scale-105 py-2 px-8"
             >
-              {user.namaTim} | Logout
+              {getDisplayName()} | Logout
             </button>
           ) : (
             <Link
@@ -235,12 +280,16 @@ const Navbar = () => {
               </Link>
             );
           })}
-          {user ? (
+          {isLoading ? (
+            <div className="mt-8 text-xl font-bold bg-gradient-to-r from-[#D9D9D9] to-[#C2A1E9] text-[#420C81] rounded-full py-3 px-12">
+              Loading...
+            </div>
+          ) : user ? (
             <button
               onClick={handleLogout}
-              className="mt-8 text-xl font-bold bg-gradient-to-r from-[#D9D9D9] to-[#C2A1E9] text-[#420C81] rounded-full py-3 px-12 hover:cursor-pointer"
+              className="mt-8 text-xl cursor-pointer font-bold bg-gradient-to-r from-[#D9D9D9] to-[#C2A1E9] text-[#420C81] rounded-full py-3 px-12"
             >
-              {user.namaTim} | Logout
+              {getDisplayName()} | Logout
             </button>
           ) : (
             <Link
