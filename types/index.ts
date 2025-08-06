@@ -56,9 +56,31 @@ export interface TimelineProps {
   timelineData: TimelineEvent[];
 }
 
-export interface User {
-  id: string,
-  email: string,
-  password: string,
-  namaTim: string,
+export interface UserProfile {
+  id: string;
+  teamName: string;
+  competitionType: string;
+}
+
+export interface AuthUser {
+  id: string;
+  email: string;
+}
+
+export interface UserStore {
+  user: AuthUser | null;
+  userProfile: UserProfile | null;
+  isLoading: boolean;
+  error: string | null;
+  isInitialized: boolean;
+  
+  setUser: (user: AuthUser | null) => void;
+  setUserProfile: (profile: UserProfile | null) => void;
+  setLoading: (loading: boolean) => void;
+  setError: (error: string | null) => void;
+  setInitialized: (initialized: boolean) => void;
+  fetchUserData: () => Promise<void>;
+  refreshUser: () => Promise<void>;
+  logout: () => Promise<void>;
+  reset: () => void;
 }

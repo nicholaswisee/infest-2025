@@ -1,23 +1,35 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import Ornament1 from "@/public/ornament1.svg";
-import Ornament2 from "@/public/ornament2.svg";
-import Logo from "@/public/logo-ksepp.png";
 import { ArrowRight } from "lucide-react";
 import { login } from "@/app/login/actions";
 import { useFormStatus } from "react-dom";
+import { useSearchParams } from "next/navigation";
 
 const LoginForm = () => {
+  const searchParams = useSearchParams();
+  const error = searchParams.get('error');
+  const message = searchParams.get('message');
+  const loginSuccess = searchParams.get('login');
+
+
   useEffect(() => {
     Aos.init({
       duration: 1000, 
       once: true,
     });
   }, []);
+
+  useEffect(() => {
+    if (loginSuccess === 'success') {
+      console.log('Login success detected from URL params');
+    }
+  }, [loginSuccess]);
+
 
   return (
     <div className="relative h-screen w-full isolate overflow-hidden">

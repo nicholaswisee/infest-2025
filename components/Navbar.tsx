@@ -8,6 +8,8 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import { createClient } from "@/utils/supabase/client";
 import { truncateString } from "@/utils/utils";
+import { useUserStore } from "@/stores/userStore";
+import { useInitializeUserStore } from "@/hooks/useInitializeUserStore";
 interface NavLink {
   name: string;
   href: string;
@@ -57,70 +59,21 @@ const Navbar = () => {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [user, setUser] = useState<any>(null);
-  const [userProfile, setUserProfile] = useState<any>(null);
-  const [isLoading, setIsLoading] = useState(true);
   const lastScrollY = useRef(0);
-  const supabase = createClient();
   
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const {
-          data: { user },
-        } = await supabase.auth.getUser();
-        
-        if (user) {
-          setUser(user);
-          
-          // Fetch user profile from your custom User table
-          const { data: profile, error: profileError } = await supabase
-            .from('User') 
-            .select('*')
-            .eq('id', user.id)
-            .single();
-            
-          if (profileError) {
-            console.error('Error fetching user profile:', profileError);
-          } else {
-            setUserProfile(profile);
-          }
-        } else {
-          setUser(null);
-          setUserProfile(null);
-        }
-      } catch (error) {
-        console.error('Error fetching user:', error);
-        setUser(null);
-        setUserProfile(null);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  useInitializeUserStore();
+  const { user, userProfile, isLoading, logout } = useUserStore();
 
-    fetchUser();
-  }, []);
-
-
-  // Handle logout function
   const handleLogout = async () => {
     try {
-      setIsLoading(true);
-      const { error } = await supabase.auth.signOut();
-      if (error) {
-        console.error('Logout error:', error);
-      } else {
-        setUser(null);
-        setUserProfile(null);
-        router.push('/');
-      }
-    } catch (error) {
-      console.error('Logout error:', error);
+      await logout();
+      router.push('/');
+    } catch (err) {
+      console.error('Logout error:', err);
     } finally {
-      setIsLoading(false);
       setMobileMenuOpen(false);
     }
-  };
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -159,15 +112,10 @@ const Navbar = () => {
     if (userProfile) {
       name = userProfile.teamName;
     } else {
-      // Fallback to auth user data
-      name = user.user_metadata?.name || 
-               user.user_metadata?.full_name || 
-               user.email?.split('@')[0] || 
-               'User';
+      name = user.email?.split('@')[0] || 'User';
     }
-    
-    // Truncate the name if it's longer than a certain number of characters
-    return truncateString(name, 10); // Adjust 10 to your desired max length
+
+    return truncateString(name, 10); 
   };
 
   return (
