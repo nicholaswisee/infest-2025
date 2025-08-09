@@ -53,7 +53,7 @@ export async function updateSession(request: NextRequest) {
     request.nextUrl.pathname.startsWith('/login')
   ) {
     const url = request.nextUrl.clone()
-    url.pathname = '/dashboard' // or wherever you want to redirect logged-in users
+    url.pathname = '/' // or wherever you want to redirect logged-in users
     return NextResponse.redirect(url)
   }
 

@@ -60,6 +60,7 @@ export interface UserProfile {
   id: string;
   teamName: string;
   competitionType: string;
+  submissionLink?: string;
 }
 
 export interface AuthUser {

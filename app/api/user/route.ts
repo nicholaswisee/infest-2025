@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
-import prisma from '@/utils/prisma/prisma'; // Fixed import path
+import prisma from '@/utils/prisma/prisma';
 
 export async function GET() {
   try {

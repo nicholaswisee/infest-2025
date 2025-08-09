@@ -1,7 +1,7 @@
 "use client";
 import { create } from 'zustand';
 import { createClient } from '@/utils/supabase/client';
-import { UserStore } from '@/types';
+import { UserStore } from '@/types'; // Import your existing types
 
 const supabase = createClient();
 
@@ -18,7 +18,6 @@ export const useUserStore = create<UserStore>((set, get) => ({
   setError: (error) => set({ error }),
   setInitialized: (isInitialized) => set({ isInitialized }),
   
-
   fetchUserData: async () => {
     try {
       // Only set loading if we're not already initialized
@@ -27,13 +26,16 @@ export const useUserStore = create<UserStore>((set, get) => ({
         set({ isLoading: true, error: null });
       }
 
+      // First check if user is authenticated
       const { data: { user: authUser }, error: authError } = await supabase.auth.getUser();
       
       if (authError) {
+        console.error('Supabase auth error:', authError);
         throw new Error(authError.message);
       }
 
       if (!authUser) {
+        console.log('No authenticated user found');
         set({ 
           user: null, 
           userProfile: null, 
@@ -43,7 +45,10 @@ export const useUserStore = create<UserStore>((set, get) => ({
         return;
       }
 
-      const response = await fetch('/api/user/', {
+      console.log('Authenticated user found:', authUser.id);
+
+      // Fetch user profile from your existing API route
+      const response = await fetch('/api/user', { // Changed from '/api/user/profile' to match your setup
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -51,8 +56,14 @@ export const useUserStore = create<UserStore>((set, get) => ({
         },
       });
 
+      console.log('API Response status:', response.status);
+
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('API Error Response:', errorText);
+        
         if (response.status === 401) {
+          // User not authenticated
           set({ 
             user: null, 
             userProfile: null, 
@@ -61,11 +72,13 @@ export const useUserStore = create<UserStore>((set, get) => ({
           });
           return;
         }
-        throw new Error('Failed to fetch user profile');
+        throw new Error(`API Error (${response.status}): ${errorText}`);
       }
 
       const data = await response.json();
+      console.log('API Response data:', data);
       
+      // Match your existing API response structure
       set({ 
         user: data.authUser,
         userProfile: data.userProfile,

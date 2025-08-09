@@ -5,17 +5,20 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import Ornament1 from "@/public/ornament1.svg";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2, AlertCircle } from "lucide-react";
 import { login } from "@/app/login/actions";
 import { useFormStatus } from "react-dom";
 import { useSearchParams } from "next/navigation";
+import { useActionState } from "react";
 
 const LoginForm = () => {
   const searchParams = useSearchParams();
-  const error = searchParams.get('error');
+  const urlError = searchParams.get('error'); // Get error from URL
   const message = searchParams.get('message');
   const loginSuccess = searchParams.get('login');
-
+  
+  // Use useActionState to handle form state and errors
+  const [state, loginAction] = useActionState(login, {});
 
   useEffect(() => {
     Aos.init({
@@ -30,6 +33,8 @@ const LoginForm = () => {
     }
   }, [loginSuccess]);
 
+  // Determine which error to show (action state errors take priority)
+  const displayError = state?.errors?.general || urlError;
 
   return (
     <div className="relative h-screen w-full isolate overflow-hidden">
@@ -50,7 +55,35 @@ const LoginForm = () => {
             Login
           </h1>
           <div className="w-full max-w-2xl mx-auto bg-[#240046]/80 backdrop-blur-lg p-8 rounded-2xl border border-white/20 shadow-2xl text-center animate-fade-in" data-aos="fade-up">
-            <form className="flex flex-col gap-6">
+            
+            {/* Show success message from URL */}
+            {loginSuccess === 'success' && (
+              <div className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-lg">
+                <div className="flex items-center justify-center gap-2 text-green-300">
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Login successful! Redirecting...</span>
+                </div>
+              </div>
+            )}
+
+            {/* Show errors (either from action state or URL) */}
+            {displayError && (
+              <div className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg">
+                <div className="flex items-center gap-2 text-red-300">
+                  <AlertCircle className="w-4 h-4" />
+                  <span>{displayError}</span>
+                </div>
+              </div>
+            )}
+
+            {/* Show signup message from URL */}
+            {message && (
+              <div className="mb-6 p-4 bg-blue-500/20 border border-blue-500/30 rounded-lg">
+                <p className="text-blue-300 text-sm">{message}</p>
+              </div>
+            )}
+
+            <form action={loginAction} className="flex flex-col gap-6">
               <div>
                 <label
                   htmlFor="email"
@@ -64,9 +97,18 @@ const LoginForm = () => {
                   name="email"
                   placeholder="Email"
                   required
-                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                  className={`w-full bg-white/10 border rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-purple-500 focus:outline-none ${
+                    state?.errors?.email ? 'border-red-500' : 'border-white/20'
+                  }`}
                 />
+                {/* Show email validation errors */}
+                {state?.errors?.email && (
+                  <p className="mt-1 text-sm text-red-400 text-left">
+                    {state.errors.email[0]}
+                  </p>
+                )}
               </div>
+              
               <div>
                 <label
                   htmlFor="password"
@@ -80,9 +122,18 @@ const LoginForm = () => {
                   name="password"
                   placeholder="Password"
                   required
-                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                  className={`w-full bg-white/10 border rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-purple-500 focus:outline-none ${
+                    state?.errors?.password ? 'border-red-500' : 'border-white/20'
+                  }`}
                 />
+                {/* Show password validation errors */}
+                {state?.errors?.password && (
+                  <p className="mt-1 text-sm text-red-400 text-left">
+                    {state.errors.password[0]}
+                  </p>
+                )}
               </div>
+              
               <SubmitButton />
             </form>
           </div>
@@ -98,12 +149,20 @@ const SubmitButton = () => {
   return (
     <button
       type="submit"
-      formAction={login}
       disabled={pending}
       className="flex mx-auto items-center gap-2 rounded-lg bg-purple-600 px-4 py-2 text-sm font-medium text-white hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
     >
-      {pending ? "Logging in..." : "Login"}
-      <ArrowRight size={16} />
+      {pending ? (
+        <>
+          <Loader2 className="w-4 h-4 animate-spin" />
+          Logging in...
+        </>
+      ) : (
+        <>
+          Login
+          <ArrowRight size={16} />
+        </>
+      )}
     </button>
   );
 };

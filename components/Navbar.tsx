@@ -6,10 +6,10 @@ import Image from "next/image";
 import Logo from "@/public/logo-ksep.png";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { createClient } from "@/utils/supabase/client";
 import { truncateString } from "@/utils/utils";
 import { useUserStore } from "@/stores/userStore";
 import { useInitializeUserStore } from "@/hooks/useInitializeUserStore";
+
 interface NavLink {
   name: string;
   href: string;
@@ -56,24 +56,12 @@ const CloseIcon = ({ className = "" }) => (
 
 const Navbar = () => {
   const pathname = usePathname();
-  const router = useRouter();
   const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
   
   useInitializeUserStore();
   const { user, userProfile, isLoading, logout } = useUserStore();
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-      router.push('/');
-    } catch (err) {
-      console.error('Logout error:', err);
-    } finally {
-      setMobileMenuOpen(false);
-    }
-  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -161,12 +149,12 @@ const Navbar = () => {
               Loading...
             </div>
           ) : user ? (
-            <button
-              onClick={handleLogout}
+            <Link
+              href="/dashboard"
               className="hidden md:flex cursor-pointer items-center bg-gradient-to-r from-[#D9D9D9] to-[#C2A1E9] text-[#420C81] font-bold rounded-full transition-transform duration-300 hover:scale-105 py-2 px-8"
             >
-              {getDisplayName()} | Logout
-            </button>
+              {getDisplayName()}
+            </Link>
           ) : (
             <Link
               href="/login"
@@ -233,12 +221,12 @@ const Navbar = () => {
               Loading...
             </div>
           ) : user ? (
-            <button
-              onClick={handleLogout}
+            <Link
+              href="/dashboard"
               className="mt-8 text-xl cursor-pointer font-bold bg-gradient-to-r from-[#D9D9D9] to-[#C2A1E9] text-[#420C81] rounded-full py-3 px-12"
             >
-              {getDisplayName()} | Logout
-            </button>
+              {getDisplayName()}
+            </Link>
           ) : (
             <Link
               href="/login"
