@@ -7,6 +7,9 @@ import Bubble from "@/public/pink-bubble.svg"
 import Ornamen from "@/public/ornament5.svg"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import CountdownSection from "@/components/LaunchCountdown"
+
+const countdownEnd = new Date("2025-08-21T00:00:00");
 
 const page = () => {
   return (
@@ -47,16 +50,6 @@ const page = () => {
             INFEST 2025 Pre-Event
           </h2>
         </div>
-
-        <Link
-          className="mx-auto w-fit text-sm md:text-base bg-gradient-to-r mb-16 from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-6 py-2 sm:py-3 flex items-center gap-3"
-          data-aos="fade-up"
-          data-aos-anchor-placement="bottom-bottom"
-          href="https://bit.ly/PreEventINFEST2025"
-        >
-          Register before 21 Aug!
-          <ArrowRight className="text-[#2F016D] w-4 md:w-5" />
-        </Link>
 
         <div className="max-w-7xl mx-auto space-y-12 md:space-y-16 lg:space-y-20">
           <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8 lg:gap-12">
@@ -151,6 +144,57 @@ const page = () => {
           </div>
         </div>
 
+        {/* Pricing Section */}
+        <div className="text-center py-8 md:py-12" data-aos="zoom-in">
+          <div className="bg-gradient-to-br from-[#E7E0EE] to-[#9A8FA5] rounded-2xl border border-white/20 p-6 md:p-8 max-w-4xl mx-auto">
+            <h3 className="text-black font-bold text-2xl md:text-3xl mb-6">Workshop Pricing</h3>
+
+            {/* Pricing Table */}
+            <div className="overflow-x-auto">
+              <table className="w-full text-black">
+                <thead>
+                  <tr className="border-b-2 border-black/20">
+                    <th className="text-center font-bold text-lg md:text-xl py-3 px-2">Plan</th>
+                    <th className="text-center font-bold text-lg md:text-xl py-3 px-2">1 Person</th>
+                    <th className="text-center font-bold text-lg md:text-xl py-3 px-2">2 People</th>
+                    <th className="text-center font-bold text-lg md:text-xl py-3 px-2">3 People</th>
+                  </tr>
+                </thead>
+                  <tbody>
+                    <tr className="border-b border-black/10">
+                      <td className="font-semibold text-base md:text-lg py-4 px-2">1 Day</td>
+                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">15K</td>
+                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">25K</td>
+                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">40K</td>
+                    </tr>
+                    <tr className="border-b border-black/10">
+                      <td className="font-semibold text-base md:text-lg py-4 px-2">2 Days</td>
+                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">25K</td>
+                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">35K</td>
+                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">50K</td>
+                    </tr>
+                  </tbody>
+
+              </table>
+            </div>
+
+            <div className="mt-6 pt-4 border-black/20"></div>
+          </div>
+          <Link
+            className="mx-auto w-fit text-sm md:text-base bg-gradient-to-r mt-16 mb-4 from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-6 py-2 sm:py-3 flex items-center gap-3"
+            data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom"
+            href="/daftar"
+          >
+            Register before 21 Aug!
+            <ArrowRight className="text-[#2F016D] w-4 md:w-5" />
+          </Link>
+        </div>
+
+        <div className="w-[90%] sm:w-2/3 max-w-[550px] mx-auto" data-aos="fade-up">
+          <CountdownSection countdownEndDate={countdownEnd}/>
+        </div>
+        
         <div className="text-center mt-24 md:mt-32 lg:mt-40 space-y-4">
           <h1
             className="bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent bg-clip-text font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
