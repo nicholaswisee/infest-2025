@@ -39,6 +39,12 @@ const page = () => {
           >
             Business Case Competition
           </Link>
+          <Link
+            href="https://bit.ly/PreEventINFEST2025 "
+            className="hover:scale-105 md:col-span-2 md:mx-auto duration-300 transition-all text-sm md:text-base text-center bg-gradient-to-r from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-6 py-2 sm:py-3"
+          >
+            Pre-Event INFEST 2025
+          </Link>
         </div>
       </div>
     </main>
