@@ -7,6 +7,7 @@ import Bubble from "@/public/pink-bubble.svg"
 import Ornamen from "@/public/ornament5.svg"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import Ajaib from "@/public/ajaib2.png"
 import CountdownSection from "@/components/LaunchCountdown"
 
 const countdownEnd = new Date("2025-08-21T00:00:00");
@@ -125,9 +126,18 @@ const page = () => {
                   </p>
                   <div className="mt-6 pt-4 border-t border-white/20">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                      <div className="flex-1">
-                        <p className="font-bold text-white text-base md:text-lg">Ratih Mustikoningsih</p>
-                        <p className="text-white/90 text-sm">Financial Expert at Ajaib Sekuritas Asia</p>
+                      <div className="flex-1 flex items-center gap-3">
+                        <div>
+                          <p className="font-bold text-white text-base md:text-lg">Ratih Mustikoningsih</p>
+                          <p className="text-white/90 text-sm">Financial Expert at Ajaib Sekuritas Asia</p>
+                        </div>
+                        <Image
+                          src={Ajaib || "/placeholder.svg"}
+                          alt="Ajaib Logo"
+                          width={110}
+                          height={80}
+                          className="h-10 object-cover rounded-[200px]"
+                        />
                       </div>
                       <div className="flex-shrink-0">
                         <div className="inline-flex items-center bg-white/10 rounded-full px-4 py-2 border border-white/20">
@@ -154,47 +164,50 @@ const page = () => {
               <table className="w-full text-black">
                 <thead>
                   <tr className="border-b-2 border-black/20">
-                    <th className="text-center font-bold text-lg md:text-xl py-3 px-2">Plan</th>
+                    <th className="text-left font-bold text-lg md:text-xl py-3 px-2">Plan</th>
                     <th className="text-center font-bold text-lg md:text-xl py-3 px-2">1 Person</th>
                     <th className="text-center font-bold text-lg md:text-xl py-3 px-2">2 People</th>
                     <th className="text-center font-bold text-lg md:text-xl py-3 px-2">3 People</th>
                   </tr>
                 </thead>
-                  <tbody>
-                    <tr className="border-b border-black/10">
-                      <td className="font-semibold text-base md:text-lg py-4 px-2">1 Day</td>
-                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">15K</td>
-                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">25K</td>
-                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">40K</td>
-                    </tr>
-                    <tr className="border-b border-black/10">
-                      <td className="font-semibold text-base md:text-lg py-4 px-2">2 Days</td>
-                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">25K</td>
-                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">35K</td>
-                      <td className="text-center font-bold text-base md:text-lg py-4 px-2">50K</td>
-                    </tr>
-                  </tbody>
-
+                <tbody>
+                  <tr className="border-b border-black/10">
+                    <td className="font-semibold text-base md:text-lg py-4 px-2">1 Day</td>
+                    <td className="text-center font-bold text-base md:text-lg py-4 px-2">15K</td>
+                    <td className="text-center font-bold text-base md:text-lg py-4 px-2">25K</td>
+                    <td className="text-center font-bold text-base md:text-lg py-4 px-2">40K</td>
+                  </tr>
+                  <tr>
+                    <td className="font-semibold text-base md:text-lg py-4 px-2">2 Days</td>
+                    <td className="text-center font-bold text-base md:text-lg py-4 px-2">25K</td>
+                    <td className="text-center font-bold text-base md:text-lg py-4 px-2">35K</td>
+                    <td className="text-center font-bold text-base md:text-lg py-4 px-2">50K</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
-
-            <div className="mt-6 pt-4 border-black/20"></div>
           </div>
-          <Link
-            className="mx-auto w-fit text-sm md:text-base bg-gradient-to-r mt-16 mb-4 from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-6 py-2 sm:py-3 flex items-center gap-3"
-            data-aos="fade-up"
-            data-aos-anchor-placement="bottom-bottom"
-            href="/daftar"
-          >
-            Register before 21 Aug!
-            <ArrowRight className="text-[#2F016D] w-4 md:w-5" />
-          </Link>
         </div>
+        <Link
+          className="mx-auto w-fit text-sm md:text-base bg-gradient-to-r mb-16 from-zinc-300 to-violet-300 rounded-full shadow-[0px_4px_22.100000381469727px_0px_rgba(255,255,255,0.50)] text-[#2F016D] font-[600] px-6 py-2 sm:py-3 flex items-center gap-3"
+          data-aos="fade-up"
+          data-aos-anchor-placement="bottom-bottom"
+          href="/daftar"
+        >
+          Register before 21 Aug!
+          <ArrowRight className="text-[#2F016D] w-4 md:w-5" />
+        </Link>
 
-        <div className="w-[90%] sm:w-2/3 max-w-[550px] mx-auto" data-aos="fade-up">
+        <p
+          className="mb-5 md:mb-10 text-center pb-4 bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent bg-clip-text font-bold text-3xl md:text-4xl lg:text-5xl mt-28"
+          data-aos="zoom-in-up"
+        >
+          Countdown
+        </p>
+        <div className="max-w-[550px] w-[90%] mx-auto" data-aos="fade-up">
           <CountdownSection countdownEndDate={countdownEnd}/>
         </div>
-        
+
         <div className="text-center mt-24 md:mt-32 lg:mt-40 space-y-4">
           <h1
             className="bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent bg-clip-text font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
