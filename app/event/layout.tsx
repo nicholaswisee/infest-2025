@@ -27,13 +27,13 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: "website",
       locale: "id_ID",
-      url: `https://infestbdg.com/event`,
+      url: `https://www.infestbdg.com/event`,
       title: "Event - INFEST ITB 2025",
       description: "Participate in INFEST's Main Event and Pre Event to gain more insights on the capital market and investing world!",
       siteName: "INFEST ITB 2025",
       images: [
         {
-          url: `https://infestbdg.com/logo-ksep.svg`,
+          url: `https://www.infestbdg.com/logo-ksep.svg`,
           width: 1200,
           height: 630,
           alt: "INFEST ITB 2025 - Event",

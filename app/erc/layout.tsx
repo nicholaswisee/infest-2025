@@ -26,13 +26,13 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: "website",
       locale: "id_ID",
-      url: `https://infestbdg.com/erc`,
+      url: `https://www.infestbdg.com/erc`,
       title: "Equity Research Competition - INFEST ITB 2025",
       description: "Join the Equity Research Competition at INFEST ITB 2025. Showcase your analytical skills in financial markets and compete with Indonesia's brightest minds.",
       siteName: "INFEST ITB 2025",
       images: [
         {
-          url: `https://infestbdg.com/logo-ksep.svg`,
+          url: `https://www.infestbdg.com/logo-ksep.svg`,
           width: 1200,
           height: 630,
           alt: "INFEST ITB 2025 - Equity Research Competition",

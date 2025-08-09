@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: ['/', '/erc', '/bcc', '/event'],
       disallow: [],
     },
-    sitemap: 'https://infestbdg.com/sitemap.xml',
+    sitemap: 'https://www.infestbdg.com/sitemap.xml',
   }
 }

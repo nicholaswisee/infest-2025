@@ -27,14 +27,14 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: "website",
       locale: "id_ID",
-      url: `https://infestbdg.com/bcc`,
+      url: `https://www.infestbdg.com/bcc`,
       title: "Business Case Competition - INFEST ITB 2025",
       description:
         "Join the Business Case Competition at INFEST ITB 2025. Solve real-world business challenges, develop strategic thinking, and compete with top students from across Indonesia.",
       siteName: "INFEST ITB 2025",
       images: [
         {
-          url: `https://infestbdg.com/logo-ksep.svg`,
+          url: `https://www.infestbdg.com/logo-ksep.svg`,
           width: 1200,
           height: 630,
           alt: "INFEST ITB 2025 - Business Case Competition",

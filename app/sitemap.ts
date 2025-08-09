@@ -4,23 +4,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     return [
     {
-        url: "https://infestbdg.com",
+        url: "https://www.infestbdg.com",
         lastModified: new Date(),
     },
     {
-        url: "https://infestbdg.com/event",
+        url: "https://www.infestbdg.com/event",
         lastModified: new Date(),
     },
         {
-        url: "https://infestbdg.com/erc",
+        url: "https://www.infestbdg.com/erc",
         lastModified: new Date(),
     },
         {
-        url: "https://infestbdg.com/bcc",
+        url: "https://www.infestbdg.com/bcc",
         lastModified: new Date(),
     },
         {
-        url: "https://infestbdg.com/daftar",
+        url: "https://www.infestbdg.com/daftar",
         lastModified: new Date(),
     },
 ]
