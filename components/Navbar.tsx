@@ -16,6 +16,7 @@ const navLinks: NavLink[] = [
   { name: "Event", href: "/event" },
   { name: "ERC", href: "/erc" },
   { name: "BCC", href: "/bcc" },
+  { name: "Daftar", href: "/daftar"}
 ];
 
 const MenuIcon = ({ className = "" }) => (
@@ -85,7 +86,7 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-[700px] z-50 transition-transform duration-500 ease-in-out ${
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-[800px] z-50 transition-transform duration-500 ease-in-out ${
           isVisible ? "translate-y-0" : "-translate-y-24"
         }`}
       >
@@ -121,10 +122,10 @@ const Navbar = () => {
           })}
 
           <Link
-            href="/daftar"
+            href="/login"
             className="inset-shadow-sm inset-shadow-indigo-500 hidden md:flex items-center bg-gradient-to-r from-[#D9D9D9] to-[#C2A1E9] text-[#420C81] font-bold rounded-full transition-transform duration-300 hover:scale-105 py-2 px-8"
           >
-            Daftar
+            Login
           </Link>
 
           <div className="md:hidden">
@@ -135,7 +136,6 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* --- Mobile Menu --- */}
       <div
         className={`fixed inset-0 z-50 transition-opacity duration-300 ease-in-out ${
           isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -180,11 +180,11 @@ const Navbar = () => {
             );
           })}
           <Link
-            href="/daftar"
+            href="/login"
             onClick={() => setMobileMenuOpen(false)}
             className="inset-shadow-sm inset-shadow-indigo-500 mt-8 text-xl font-bold bg-gradient-to-r from-[#D9D9D9] to-[#C2A1E9] text-[#420C81] rounded-full py-3 px-12"
           >
-            Daftar
+            Login
           </Link>
         </nav>
       </div>
