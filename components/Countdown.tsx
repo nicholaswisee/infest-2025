@@ -48,19 +48,19 @@ const Countdown : React.FC<CountdownProps> = ({targetDate, onFinish}) => {
         <div className={`${openSans.className} flex justify-center gap-6 text-2xl md:text-7xl leading-[35px] rounded-4xl font-normal tracking-[1%] text-center text-white`}>
             <div className="text-center">
                 <p>{days}</p>
-                <span className="text-xl text-white">Days</span>
+                <span className="text-lg md:text-xl text-white">Days</span>
             </div>
             <div className="text-center">
                 <p>{hours}</p>
-                <span className="text-xl text-white">Hours</span>
+                <span className="text-lg md:text-xl text-white">Hours</span>
             </div>
             <div className="text-center">
                 <p>{minutes}</p>
-                <span className="text-xl text-white">Minutes</span>
+                <span className="text-lg md:text-xl text-white">Minutes</span>
             </div>
-            <div className="text-center">
+            <div className="text-center hidden sm:block">
                 <p>{seconds}</p>
-                <span className="text-xl text-white">Seconds</span>
+                <span className="text-lg md:text-xl text-white">Seconds</span>
             </div>
         </div>
     );

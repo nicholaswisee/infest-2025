@@ -154,17 +154,15 @@ const page = () => {
           </div>
         </div>
 
-        {/* Pricing Section */}
         <div className="text-center py-8 md:py-12" data-aos="zoom-in">
           <div className="bg-gradient-to-br from-[#E7E0EE] to-[#9A8FA5] rounded-2xl border border-white/20 p-6 md:p-8 max-w-4xl mx-auto">
             <h3 className="text-black font-bold text-2xl md:text-3xl mb-6">Workshop Pricing</h3>
 
-            {/* Pricing Table */}
             <div className="overflow-x-auto">
               <table className="w-full text-black">
                 <thead>
                   <tr className="border-b-2 border-black/20">
-                    <th className="text-left font-bold text-lg md:text-xl py-3 px-2">Plan</th>
+                    <th className="text-center font-bold text-lg md:text-xl py-3 px-2">Plan</th>
                     <th className="text-center font-bold text-lg md:text-xl py-3 px-2">1 Person</th>
                     <th className="text-center font-bold text-lg md:text-xl py-3 px-2">2 People</th>
                     <th className="text-center font-bold text-lg md:text-xl py-3 px-2">3 People</th>
@@ -204,7 +202,7 @@ const page = () => {
         >
           Countdown
         </p>
-        <div className="max-w-[550px] w-[90%] mx-auto" data-aos="fade-up">
+        <div className="max-w-[600px] w-[90%] mx-auto" data-aos="fade-up">
           <CountdownSection countdownEndDate={countdownEnd}/>
         </div>
 
