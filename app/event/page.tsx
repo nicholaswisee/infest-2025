@@ -58,14 +58,14 @@ const page = () => {
               <div className="bg-gradient-to-bl from-[#C18EFC] to-[#782DCD] rounded-2xl border border-white/20 p-6 md:p-8 lg:p-10">
                 <div className="space-y-4">
                   <h3 className="font-bold text-xl md:text-2xl text-[#FFEED2] leading-tight">
-                    Demystifying the Stock Market: Mastering the Art of Fundamental Analysis
-                  </h3>
-                  <p className="text-white font-bold">💡 Perfect for beginners & aspiring equity analysts.</p>
+                    Mastering the Written Pitch Deck: From Concept to Clarity                  </h3>
+                  <p className="text-white font-bold">💡 Perfect for beginners & aspiring business case competitors.</p>
                   <p className="text-white">
-                    Behind every great investment is a strong analysis. In this session, we'll dive deep into the key
-                    principles of fundamental analysis — from financial ratios to business models. Learn how to analyze
-                    financial statements, evaluate company value, and make smarter investment decisions based on
-                    fundamental analysis.
+                    Behind every great Pitch Deck is a strong analysis. In this 
+                    session, we’ll dive deep into the key principles of building 
+                    an effective pitch deck. Learn how to structure your narrative, 
+                    design visually engaging slides, and communicate your ideas in
+                    a way that captures attention and inspires action.
                   </p>
                   <div className="mt-6 pt-4 border-t border-white/20">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
