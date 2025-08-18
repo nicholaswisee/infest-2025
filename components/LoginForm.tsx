@@ -27,12 +27,6 @@ const LoginForm = () => {
     });
   }, []);
 
-  useEffect(() => {
-    if (loginSuccess === 'success') {
-      console.log('Login success detected from URL params');
-    }
-  }, [loginSuccess]);
-
   // Determine which error to show (action state errors take priority)
   const displayError = state?.errors?.general || urlError;
 
@@ -66,7 +60,6 @@ const LoginForm = () => {
               </div>
             )}
 
-            {/* Show errors (either from action state or URL) */}
             {displayError && (
               <div className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg">
                 <div className="flex items-center gap-2 text-red-300">
@@ -76,7 +69,6 @@ const LoginForm = () => {
               </div>
             )}
 
-            {/* Show signup message from URL */}
             {message && (
               <div className="mb-6 p-4 bg-blue-500/20 border border-blue-500/30 rounded-lg">
                 <p className="text-blue-300 text-sm">{message}</p>
@@ -101,7 +93,6 @@ const LoginForm = () => {
                     state?.errors?.email ? 'border-red-500' : 'border-white/20'
                   }`}
                 />
-                {/* Show email validation errors */}
                 {state?.errors?.email && (
                   <p className="mt-1 text-sm text-red-400 text-left">
                     {state.errors.email[0]}
@@ -126,7 +117,6 @@ const LoginForm = () => {
                     state?.errors?.password ? 'border-red-500' : 'border-white/20'
                   }`}
                 />
-                {/* Show password validation errors */}
                 {state?.errors?.password && (
                   <p className="mt-1 text-sm text-red-400 text-left">
                     {state.errors.password[0]}

@@ -13,9 +13,7 @@ export const LoginSuccessHandler = () => {
     const loginSuccess = searchParams.get('login');
     
     if (loginSuccess === 'success') {
-      console.log('Login success detected, refreshing user data...');
       
-      // Refresh the user data to ensure navbar updates
       refreshUser();
       
       // Clean up the URL by removing the login parameter
@@ -25,7 +23,7 @@ export const LoginSuccessHandler = () => {
     }
   }, [searchParams, refreshUser, router]);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default LoginSuccessHandler;

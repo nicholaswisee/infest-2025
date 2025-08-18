@@ -18,7 +18,6 @@ async function uploadFileToDrive(
     process.env.GOOGLE_PRIVATE_KEY_BASE64 || "",
     "base64"
   ).toString("utf8");
-  // console.log(privateKey);
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,

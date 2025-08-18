@@ -5,7 +5,7 @@ const f = createUploadthing();
  
 export const ourFileRouter = {
   submissionUploader: f({ 
-    pdf: { maxFileSize: "16MB" }
+    pdf: { maxFileSize: "32MB" }
   })
     .middleware(async ({ req }) => {
       const supabase = await createClient();
@@ -18,8 +18,6 @@ export const ourFileRouter = {
       return { userId: user.id };
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      console.log("Upload complete for userId:", metadata.userId);
-      console.log("file url", file.ufsUrl);
       
       let slot = 1;
       if (file.name.startsWith('slot1_')) {

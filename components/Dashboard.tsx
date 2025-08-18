@@ -88,14 +88,12 @@ const Dashboard = () => {
   const handleFileChange = (slotId: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      // Validate file size (16MB limit)
-      if (file.size > 16 * 1024 * 1024) {
+      if (file.size > 32 * 1024 * 1024) {
         setUploadError("File size must be less than 16MB");
         setTimeout(() => setUploadError(null), 5000);
         return;
       }
       
-      // Validate file type
       const allowedTypes = ['application/pdf'];
       
       if (!allowedTypes.includes(file.type)) {
@@ -123,7 +121,6 @@ const Dashboard = () => {
     setUploadError(null);
     
     try {
-      // Include slot information in the upload
       const fileWithSlotInfo = new File(
       [selectedFile], 
       `slot${slotId}_${selectedFile.name}`, 

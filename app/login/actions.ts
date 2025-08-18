@@ -58,8 +58,6 @@ export async function login(prevState: LoginState | undefined, formData: FormDat
         },
       };
     }
-
-    console.log('Server login successful');
     
     // Redirect on success
     revalidatePath('/', 'layout');
@@ -96,8 +94,6 @@ export async function signup(formData: FormData) {
     console.error('Server signup error:', error)
     redirect('/login?error=Error signing up')
   }
-
-  console.log('Server signup successful')
   revalidatePath('/', 'layout')
   redirect('/login?message=Check email to continue sign in process')
 }

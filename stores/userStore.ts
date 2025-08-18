@@ -1,7 +1,7 @@
 "use client";
 import { create } from 'zustand';
 import { createClient } from '@/utils/supabase/client';
-import { UserStore } from '@/types'; // Import your existing types
+import { UserStore } from '@/types';
 
 const supabase = createClient();
 
@@ -25,8 +25,7 @@ export const useUserStore = create<UserStore>((set, get) => ({
       if (!isInitialized) {
         set({ isLoading: true, error: null });
       }
-      
-      // First check if user is authenticated
+
       const { data: { user: authUser }, error: authError } = await supabase.auth.getUser();
       
       if (authError) {
@@ -45,18 +44,15 @@ export const useUserStore = create<UserStore>((set, get) => ({
         return;
       }
 
-      console.log('Authenticated user found:', authUser.id);
 
       // Fetch user profile from your existing API route
-      const response = await fetch('/api/user', { // Changed from '/api/user/profile' to match your setup
+      const response = await fetch('/api/user', {
         method: 'GET',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
-      console.log('API Response status:', response.status);
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -76,9 +72,7 @@ export const useUserStore = create<UserStore>((set, get) => ({
       }
 
       const data = await response.json();
-      console.log('API Response data:', data);
       
-      // Match your existing API response structure
       set({ 
         user: data.authUser,
         userProfile: data.userProfile,
@@ -100,7 +94,6 @@ export const useUserStore = create<UserStore>((set, get) => ({
 
   refreshUser: async () => {
     const { fetchUserData } = get();
-    // Don't show loading state for refresh
     await fetchUserData();
   },
 
