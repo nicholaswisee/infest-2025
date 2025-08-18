@@ -50,7 +50,8 @@ export async function GET() {
         id: true,
         teamName: true,
         competitionType: true,
-        submissionLink: true,
+        submissionLink1: true,
+        submissionLink2: true,
       },
     });
 

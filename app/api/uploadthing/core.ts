@@ -19,8 +19,15 @@ export const ourFileRouter = {
     })
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("Upload complete for userId:", metadata.userId);
-      console.log("file url", file.url);
- 
+      console.log("file url", file.ufsUrl);
+      
+      let slot = 1;
+      if (file.name.startsWith('slot1_')) {
+        slot = 1;
+      } else if (file.name.startsWith('slot2_')) {
+        slot = 2;
+      }
+
       // Update user's submissionLink in database
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/user/submission`, {
@@ -30,7 +37,8 @@ export const ourFileRouter = {
           },
           body: JSON.stringify({ 
             userId: metadata.userId,
-            submissionLink: file.ufsUrl
+            submissionLink: file.ufsUrl, 
+            slot: slot
           }),
         });
 
@@ -40,8 +48,8 @@ export const ourFileRouter = {
       } catch (error) {
         console.error('Error updating submission link:', error);
       }
- 
-      return { uploadedBy: metadata.userId, url: file.url };
+
+      return { uploadedBy: metadata.userId, url: file.ufsUrl, slot };
     }),
 } satisfies FileRouter;
  

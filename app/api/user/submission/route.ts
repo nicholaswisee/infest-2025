@@ -6,7 +6,7 @@ import prisma from '@/utils/prisma/prisma';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { submissionLink, userId } = body;
+    const { submissionLink, userId, slot } = body;
 
     // If userId is provided (from UploadThing callback), use it
     // Otherwise, get user from auth
@@ -46,13 +46,27 @@ export async function POST(request: Request) {
       currentUserId = user.id;
     }
 
+    if (!slot || slot !== 1 && slot !== 2) {
+      return NextResponse.json(
+        { error: 'Invalid slot. Must be 1 or 2' },
+        { status: 400 }
+      )
+    }
+
+    const fieldName = slot === 1 ? 'submissionLink1' : 'submissionLink2'
     // Update user's submissionLink in database
+
+    const updatedData: any = {
+      [fieldName]: submissionLink,
+    }
+
     const updatedUser = await prisma.user.update({
       where: { id: currentUserId },
-      data: { submissionLink },
+      data: updatedData, 
       select: {
         id: true,
-        submissionLink: true,
+        submissionLink1: true,
+        submissionLink2: true,
       },
     });
 
