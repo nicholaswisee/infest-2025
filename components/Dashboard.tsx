@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { Upload, FileText, CheckCircle, AlertCircle, Download, LogOut } from "lucide-react"; // Add LogOut icon
-import { UploadButton, UploadDropzone } from "@/utils/uploadthing/uploadthing";
+import { useUploadThing } from "@/utils/uploadthing/uploadthing";
 import { useUserStore } from "@/stores/userStore";
 import { useInitializeUserStore } from "@/hooks/useInitializeUserStore";
 import { useRouter } from "next/navigation";
@@ -13,12 +13,77 @@ const Dashboard = () => {
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false); // Add loading state
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
   const router = useRouter();
 
-  // Initialize user store
   useInitializeUserStore();
   
   const { user, userProfile, isLoading, refreshUser, logout } = useUserStore();
+
+  const { startUpload } = useUploadThing("submissionUploader", {
+    onClientUploadComplete: (res) => {
+      console.log("Files: ", res);
+      setUploadSuccess(true);
+      setUploadError(null);
+      setSelectedFile(null);
+      setIsUploading(false);
+      refreshUser();
+      setTimeout(() => setUploadSuccess(false), 5000);
+    },
+    onUploadError: (error: Error) => {
+      console.error("Upload error:", error);
+      setUploadError(error.message);
+      setIsUploading(false);
+      setTimeout(() => setUploadError(null), 5000);
+    },
+  });
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Validate file size (16MB limit)
+      if (file.size > 16 * 1024 * 1024) {
+        setUploadError("File size must be less than 16MB");
+        setTimeout(() => setUploadError(null), 5000);
+        return;
+      }
+      
+      // Validate file type
+      const allowedTypes = ['application/pdf'];
+      
+      if (!allowedTypes.includes(file.type)) {
+        setUploadError("Please select a PDF file");
+        setTimeout(() => setUploadError(null), 5000);
+        return;
+      }
+      
+      setSelectedFile(file);
+      setUploadError(null);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!selectedFile) {
+      setUploadError("Please select a file first");
+      setTimeout(() => setUploadError(null), 5000);
+      return;
+    }
+
+    setIsUploading(true);
+    setUploadError(null);
+    
+    try {
+      await startUpload([selectedFile]);
+    } catch (error) {
+      console.error("Upload failed:", error);
+      setUploadError("Upload failed. Please try again.");
+      setIsUploading(false);
+      setTimeout(() => setUploadError(null), 5000);
+    }
+  };
 
   const handleLogout = async () => {
     try {
@@ -56,7 +121,7 @@ const Dashboard = () => {
     );
   }
 
-  return (
+   return (
     <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center text-center text-white p-4 pt-24">
       <div className="w-full max-w-4xl mx-auto mb-8 flex justify-center items-center" data-aos="fade-down">
         <h1 className="bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent text-center bg-clip-text font-bold text-5xl">
@@ -100,37 +165,51 @@ const Dashboard = () => {
         <div className="bg-[#240046]/80 backdrop-blur-lg p-8 rounded-2xl border border-white/20 shadow-2xl">
           <h3 className="text-xl font-bold mb-6 text-left">Submit Your File</h3>
           
-          <div className="mb-6">
-            <UploadDropzone
-              endpoint="submissionUploader"
-              onClientUploadComplete={(res) => {
-                console.log("Files: ", res);
-                setUploadSuccess(true);
-                setUploadError(null);
-                refreshUser();
-                setTimeout(() => setUploadSuccess(false), 5000);
-              }}
-              onUploadError={(error: Error) => {
-                console.error("Upload error:", error);
-                setUploadError(error.message);
-                setTimeout(() => setUploadError(null), 5000);
-              }}
-              config={{
-                mode: "auto",
-              }}
-              appearance={{
-                container: "border-2 border-dashed border-white/30 rounded-xl p-8 transition-colors hover:border-white/50 cursor-pointer bg-transparent",
-                uploadIcon: "text-white/60 w-12 h-12",
-                label: "text-white text-lg mb-2",
-                allowedContent: "text-white/60 text-sm",
-                button: "bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-lg text-white font-medium transition-colors ut-ready:bg-purple-600 ut-uploading:bg-purple-700 ut-uploading:cursor-not-allowed",
-              }}
-              content={{
-                label: "Drop your file here or click to browse",
-                allowedContent: "PDF, DOC, DOCX, ZIP (Max 16MB)",
-              }}
-            />
-          </div>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <label htmlFor="file-upload" className="cursor-pointer">
+              <div className="border-2 border-dashed border-white/30 rounded-xl p-8 transition-colors hover:border-white/50 bg-transparent">
+                <div className="flex flex-col items-center space-y-4">
+                <Upload className="w-12 h-12 text-white/60" />
+                  <div className="text-center">
+                      <span className="text-white text-lg mb-2 block">
+                        {selectedFile ? selectedFile.name : "Choose your file"}
+                      </span>
+                      <span className="text-white/60 text-sm">
+                        PDF (Max 16MB)
+                      </span>
+                    <input
+                      id="file-upload"
+                      type="file"
+                      className="hidden"
+                      accept=".pdf"
+                      onChange={handleFileChange}
+                      disabled={isUploading}
+                    />
+                  </div>
+                  {selectedFile && (
+                    <div className="text-center">
+                      <p className="text-green-200 text-sm">
+                        Selected: {selectedFile.name}
+                      </p>
+                      <p className="text-white/60 text-xs">
+                        Size: {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB
+                      </p>
+                    </div>
+                  )}
+               </div>
+              </div>
+            </label>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                disabled={!selectedFile || isUploading}
+                className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-600/50 disabled:cursor-not-allowed px-8 py-3 rounded-lg text-white font-medium transition-colors mt-4"
+              >
+                <Upload className="w-4 h-4" />
+                {isUploading ? 'Uploading...' : 'Submit File'}
+              </button>
+            </div>
+          </form>
 
           {uploadSuccess && (
             <div className="flex items-center gap-2 mt-4 p-3 bg-green-500/20 border border-green-500/50 rounded-lg">

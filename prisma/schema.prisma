@@ -1,24 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  output   = "../app/generated/prisma"
 }
 
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
-}
-
-model User {
-  email           String           @unique
-  teamName        String?
-  submissionLink  String?
-  createdAt       DateTime         @default(now())
-  id              String           @id @db.Uuid
-  competitionType CompetitionType?
+  directUrl = env("DIRECT_URL") // uses a direct connection
 }
 
 enum CompetitionType {
   BCC
   ERC
+}
+
+model User {
+  id              String           @id @default(uuid()) @db.Uuid
+  email           String
+  teamName        String?
+  submissionLink  String?
+  createdAt       DateTime         @default(now()) @db.Timestamp(6)
+  competitionType CompetitionType?
+
+  @@map("User") // This maps to your exact table name in Supabase
 }

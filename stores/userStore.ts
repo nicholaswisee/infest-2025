@@ -25,7 +25,7 @@ export const useUserStore = create<UserStore>((set, get) => ({
       if (!isInitialized) {
         set({ isLoading: true, error: null });
       }
-
+      
       // First check if user is authenticated
       const { data: { user: authUser }, error: authError } = await supabase.auth.getUser();
       
@@ -87,14 +87,14 @@ export const useUserStore = create<UserStore>((set, get) => ({
       });
 
     } catch (err) {
-      console.error('Error fetching user data:', err);
-      set({ 
-        error: err instanceof Error ? err.message : 'An unknown error occurred',
-        user: null,
-        userProfile: null,
-        isLoading: false,
-        isInitialized: true
-      });
+        console.error('Error fetching user data:', err);
+        set({ 
+          error: err instanceof Error ? err.message : 'An unknown error occurred',
+          user: null,
+          userProfile: null,
+          isLoading: false,
+          isInitialized: true
+        });
     }
   },
 

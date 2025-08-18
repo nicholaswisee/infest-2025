@@ -30,7 +30,7 @@ export const ourFileRouter = {
           },
           body: JSON.stringify({ 
             userId: metadata.userId,
-            submissionLink: file.url 
+            submissionLink: file.ufsUrl
           }),
         });
 
