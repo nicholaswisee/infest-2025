@@ -33,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "INFEST ITB 2025",
       images: [
         {
-          url: `https://www.infestbdg.com/logo-ksep.svg`,
+          url: `https://www.infestbdg.com/logo-infest.svg`,
           width: 1200,
           height: 630,
           alt: "INFEST ITB 2025 - Event",

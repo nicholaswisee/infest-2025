@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 import Image from "next/image";
 import Ornament1 from "@/public/ornament1.svg";
 import Ornament2 from "@/public/ornament2.svg";
-import Logo from "@/public/logo-ksepp.png";
+import Logo from "@/public/logo-infest.png";
 import { ArrowRight } from "lucide-react";
 const Hero = () => {
   useEffect(() => {

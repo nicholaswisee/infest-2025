@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
-import Logo from "@/public/logo-ksep.png";
+import Logo from "@/public/logo-infest.png";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { truncateString } from "@/utils/utils";
@@ -22,7 +22,7 @@ const navLinks: NavLink[] = [
   { name: "BCC", href: "/bcc" },
   { name: "Daftar", href: "/daftar"}
 ];
-
+  
 const MenuIcon = ({ className = "" }) => (
   <svg
     className={`w-7 h-7 text-white ${className}`}
