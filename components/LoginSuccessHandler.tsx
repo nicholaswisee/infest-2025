@@ -15,11 +15,11 @@ export const LoginSuccessHandler = () => {
     if (loginSuccess === 'success') {
       
       refreshUser();
-      
-      // Clean up the URL by removing the login parameter
-      const url = new URL(window.location.href);
-      url.searchParams.delete('login');
-      router.replace(url.pathname + url.search, { scroll: false });
+        
+        // Clean up the URL by removing the login parameter
+        const url = new URL(window.location.href);
+        url.searchParams.delete('login');
+        router.replace(url.pathname + url.search, { scroll: false });
     }
   }, [searchParams, refreshUser, router]);
 

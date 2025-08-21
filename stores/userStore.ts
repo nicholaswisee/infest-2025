@@ -44,7 +44,6 @@ export const useUserStore = create<UserStore>((set, get) => ({
         return;
       }
 
-
       // Fetch user profile from your existing API route
       const response = await fetch('/api/user', {
         method: 'GET',
