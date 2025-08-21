@@ -110,13 +110,15 @@ export const useUserStore = create<UserStore>((set, get) => ({
         user: null,
         userProfile: null,
         error: null,
-        isLoading: false
+        isLoading: false,
+        isInitialized: false
       });
     } catch (err) {
       console.error('Logout error:', err);
       set({ 
         error: err instanceof Error ? err.message : 'Logout failed',
-        isLoading: false
+        isLoading: false,
+        isInitialized: false
       });
     }
   },

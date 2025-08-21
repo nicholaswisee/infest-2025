@@ -138,8 +138,8 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       setIsLoggingOut(true);
-      router.push('/');
       await logout()
+      router.push('/');
       refreshUser(); 
     } catch (err) {
       console.error('Logout error:', err);

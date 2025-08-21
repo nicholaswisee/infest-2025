@@ -94,6 +94,7 @@ const Navbar = () => {
 
   // Function to get display name
   const getDisplayName = () => {
+    if (isLoading) return 'Loading...';
     if (!user) return '';
     
     let name = '';
