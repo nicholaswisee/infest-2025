@@ -7,14 +7,14 @@ import { useUserStore } from '@/stores/userStore';
 export const LoginSuccessHandler = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const refreshUser = useUserStore((state) => state.refreshUser);
+  const { refreshUser, setLoading } = useUserStore();
 
   useEffect(() => {
     const loginSuccess = searchParams.get('login');
 
     if (loginSuccess === 'success') {
-      // Wait for user data to refresh before redirecting
       (async () => {
+        setLoading(true);
         await refreshUser();
         const url = new URL(window.location.href);
         url.searchParams.delete('login');
