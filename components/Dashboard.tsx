@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 import { Upload, FileText, CheckCircle, AlertCircle, Download, LogOut } from "lucide-react"; // Add LogOut icon
 import { useUploadThing } from "@/utils/uploadthing/uploadthing";
 import { useUserStore } from "@/stores/userStore";
+import Loader from "./Loader";
 import { useInitializeUserStore } from "@/hooks/useInitializeUserStore";
 import { useRouter } from "next/navigation";
 
@@ -157,9 +158,7 @@ const Dashboard = () => {
 
   if (isLoading) {
     return (
-      <div className="relative h-screen w-full isolate overflow-hidden flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
-      </div>
+      <Loader />
     );
   }
 
