@@ -37,7 +37,8 @@ const Dashboard = () => {
     if (competitionType === 'BCC') {
       return {
         uploads: [
-          { id: 1, name: 'Slide Deck', required: true }
+          { id: 1, name: 'Slide Deck', required: true },
+          { id: 2, name: 'Financial Projection', required: true }
         ]
       };
     } else if (competitionType === 'ERC') {
