@@ -91,15 +91,15 @@ const Dashboard = () => {
     const file = e.target.files?.[0];
     if (file) {
       if (file.size > 32 * 1024 * 1024) {
-        setUploadError("File size must be less than 16MB");
+        setUploadError("File size must be less than 32MB");
         setTimeout(() => setUploadError(null), 5000);
         return;
       }
-      
-      const allowedTypes = ['application/pdf'];
-      
+
+      const allowedTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'];
+
       if (!allowedTypes.includes(file.type)) {
-        setUploadError("Please select a PDF file");
+        setUploadError("Please select a PDF or Excel file (.pdf, .xlsx, .xls");
         setTimeout(() => setUploadError(null), 5000);
         return;
       }
@@ -229,13 +229,13 @@ const Dashboard = () => {
                         {selectedFiles[uploadItem.id] ? selectedFiles[uploadItem.id]!.name : `Choose your ${uploadItem.name.toLowerCase()}`}
                       </span>
                       <span className="text-white/60 text-sm">
-                        PDF (Max 16MB)
+                        PDF or Excel (Max 32MB)
                       </span>
                       <input
                         id={`file-upload-${uploadItem.id}`}
                         type="file"
                         className="hidden"
-                        accept=".pdf"
+                        accept=".pdf,.xlsx,.xls"
                         onChange={handleFileChange(uploadItem.id)}
                         disabled={uploadingSlots[uploadItem.id]}
                       />
