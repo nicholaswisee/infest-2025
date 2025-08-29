@@ -5,7 +5,9 @@ const f = createUploadthing();
  
 export const ourFileRouter = {
   submissionUploader: f({ 
-    pdf: { maxFileSize: "32MB" }
+    pdf: { maxFileSize: "32MB" },
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": { maxFileSize: "32MB" },
+    "application/vnd.ms-excel": { maxFileSize: "32MB" }
   })
     .middleware(async ({ req }) => {
       const supabase = await createClient();
