@@ -9,6 +9,7 @@ import { useUserStore } from "@/stores/userStore";
 import Loader from "./Loader";
 import { useInitializeUserStore } from "@/hooks/useInitializeUserStore";
 import { useRouter } from "next/navigation";
+import { useRefetchUser } from "@/hooks/useRefetchUser";
 
 const Dashboard = () => {
   const [uploadError, setUploadError] = useState<string | null>(null);
@@ -30,7 +31,9 @@ const Dashboard = () => {
   useInitializeUserStore();
   
   const { user, userProfile, isLoading, refreshUser, logout } = useUserStore();
-
+  
+  useRefetchUser();
+  
   const getUploadConfig = () => {
     const competitionType = userProfile?.competitionType;
     
@@ -150,6 +153,7 @@ const Dashboard = () => {
     }
   }
 
+  
   useEffect(() => {
     Aos.init({
       duration: 1000,

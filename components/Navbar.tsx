@@ -9,6 +9,7 @@ import "aos/dist/aos.css";
 import { truncateString } from "@/utils/utils";
 import { useUserStore } from "@/stores/userStore";
 import { useInitializeUserStore } from "@/hooks/useInitializeUserStore";
+import { useRefetchUser } from "@/hooks/useRefetchUser";
 
 interface NavLink {
   name: string;
@@ -91,6 +92,8 @@ const Navbar = () => {
       duration: 1000,
     });
   }, []);
+
+  useRefetchUser();
 
   // Function to get display name
   const getDisplayName = () => {
