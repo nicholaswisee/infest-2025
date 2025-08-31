@@ -175,13 +175,38 @@ const Dashboard = () => {
     );
   }
 
-   return (
-    <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center text-center text-white p-4 pt-24">
-      <div className="w-full max-w-4xl mx-auto mb-8 flex justify-center items-center" data-aos="fade-down">
-        <h1 className="bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent text-center bg-clip-text font-bold text-5xl">
-          Dashboard
-        </h1>
+  if (userProfile?.competitionType === "ERC" && new Date() > new Date("2025-09-01T05:00:00+07:00")) {
+    return (
+      <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center text-center text-white p-4 pt-24">
+        <div className="w-full max-w-4xl mx-auto mb-8 flex justify-center items-center" data-aos="fade-down">
+          <h1 className="bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent text-center bg-clip-text font-bold text-5xl">
+          Sorry, the submission period for ERC has ended.
+          </h1>
+        </div>
       </div>
+    );
+  }
+
+  
+  if (userProfile?.competitionType === "BCC" && new Date() > new Date("2025-09-04T05:00:00+07:00")) {
+    return (
+      <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center text-center text-white p-4 pt-24">
+        <div className="w-full max-w-4xl mx-auto mb-8 flex justify-center items-center" data-aos="fade-down">
+          <h1 className="bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent text-center bg-clip-text font-bold text-5xl">
+          Sorry, the submission period for BCC has ended.
+          </h1>
+        </div>
+      </div>
+    );
+  }
+
+    return (
+      <div className="relative z-10 flex min-h-screen w-full flex-col items-center justify-center text-center text-white p-4 pt-24">
+        <div className="w-full max-w-4xl mx-auto mb-8 flex justify-center items-center" data-aos="fade-down">
+          <h1 className="bg-gradient-to-b from-white via-[#C899FF] to-white text-transparent text-center bg-clip-text font-bold text-5xl">
+          Dashboard
+          </h1>
+        </div>
 
       <div className="w-full max-w-4xl mx-auto mb-8" data-aos="fade-up">
         <div className="bg-[#240046]/80 backdrop-blur-lg p-6 rounded-2xl border border-white/20 shadow-2xl">
